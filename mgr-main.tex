@@ -1,0 +1,719 @@
+%& --translate-file=il2-pl
+% *** Uwaga *** Tekst w tym pliku nie ma specjalnie sensu i s³u¿y za twz. wype³niacz ***
+\documentclass[skorowidz,palatino,
+%%brudnopis,
+autorrok,%% <-- cytowanie autor-rok (trzeba w³±czyæ odp. styl bibliograficzny, patrz  ni¿ej `\bibliographystyle'
+backref,%% pokaz w spisie literatury numery stron
+xodstep]{wzmgr}
+
+% Opcjonalnie identyfikator dokumentu (drukowany tylko z w³±czon± opcj± `brudnopis'):
+\nrwersji {0.1}
+
+% Dane autora(ów):
+\author   {Walenty Szczêsny}
+\nralbumu {rr000000001}
+\email    {walenty@szczesny.com.pl}
+
+\author   {Monika A.~Szczêsna-Wo¶}
+\nralbumu {rr000000002}
+
+% Tytu³ pracy:
+\title    {Dokumenty strukturalne: teoria i~zastosowania}
+
+% Kierunek, tj. katedra/instytut promotora:
+\kierunek {Informatyka Ekonomiczna}
+
+% Rok obrony:
+\date     {2001}
+
+% Je¿eli nie podano miejsca zostanie wpisany `Sopot'
+\miejsce {Wejherowo}
+
+% Tytu³ naukowy, imiê i nazwisko promotora:
+\opiekun  {dra hab. Jan Kowalski}
+
+%
+% Miejsce na deklaracje w³asnych poleceñ:
+\newcommand{\filename}[1]{\texttt{#1}}
+
+% Cytowanie przez numer (standard):
+%\bibliographystyle{plain} 
+%
+% Je¿eli cytowanie autor-rok to np.:
+\bibliographystyle{papalike}
+%
+% Inne sposoby
+%\bibliographystyle{abbrv} %% standard
+%\bibliographystyle{acm} %% ACM transactions...
+%\bibliographystyle{elsart-harv} %% dziwaczny %%
+
+%%% zakomentuj \iffalse ... \fi (ostatnie, zaznaczone //pdfscreen) je¿eli chcesz w³±czyæ pakiet pdfscreen:
+\def\SITI{SI/TI} %%%
+\def\ISTI{SI/TI} %%%
+\def\UTAUT{UTAUT} %%%
+%%
+\iffalse
+\usepackage{ifpdf}
+\makeatletter 
+% polecenie zawieraj±ce @ musz± byæ wew \makeatletter
+% ... \makeatother
+
+\renewcommand*\@seccntformat[1]{\csname the#1\endcsname\enspace}
+\def\@makechapterhead#1{%
+  {\parindent \z@ \raggedright \normalfont
+    \ifnum \c@secnumdepth >\m@ne
+        \normalsize \bfseries \MakeUppercase{\@chapapp}\space \thechapter.
+        \par\nobreak
+        \vskip\baselineskip 
+    \fi
+    \interlinepenalty\@M
+    \LARGE \bfseries #1\par\nobreak
+    \vskip 40\p@
+  }}
+\def\numberline#1{\hb@xt@\@tempdima{#1\hfil}}
+
+\makeatother
+%%\nofiles
+
+\ifpdf
+\usepackage[screen,article,sidebar,polish]{pdfscreen}
+\begin{screen}
+\margins{.65in}{.65in}{.65in}{.65in}
+\screensize{6.25in}{8in}
+\end{screen}
+\fi
+
+\fi %%//pdfscreen
+%%%
+
+\begin{document}
+
+%%
+\nocite{beebe,p.perl} %% do³±cza niecytowane
+%%\nocite{*} %% ** do³±cza wszystko **
+
+% Streszczenie/S³owa kluczowe:
+% Streszczenie jest opcjonalne
+\begin{abstract}
+  Aczkolwiek w~ci±gu ostatnich lat sk³ad tekstu wspomagany komputerowo
+  ca³kowicie wyeliminowa³ stosowanie tradycyjnych technik drukarskich,
+  to podobny proces w~przypadku publikacji elektronicznych czyli
+  publikacji, które w~ogóle nie wykorzystuj± papieru, a~no¶nikem
+  informacji staje siê ekran komputera nie jest obserwowany.
+\end{abstract}
+%% Je¿eli nie ma byæ s³ów kluczowych nie wstawiaj deklaracji \keywords{...}
+%% uwaga: polecenie \keywords{} z `pustym' argumentem nie zadzia³a
+%%\keywords{SGML, XML, XSL, dokumenty elektroniczne, dokumenty strukturalne}
+
+% Tytu³/spis tre¶ci
+\maketitle
+%
+% Wstêp
+\introduction
+
+Aczkolwiek w~ci±gu ostatnich lat sk³ad tekstu wspomagany
+komputerowo ca³kowicie wyeliminowa³ stosowanie tradycyjnych technik
+drukarskich, to podobny proces w~przypadku publikacji elektronicznych
+czyli publikacji, które w~ogóle nie wykorzystuj± papieru, a~no¶nikem
+informacji staje siê ekran komputera nie jest obserwowany.
+
+Formatowanie wizualne, powsta³o z~my¶l± o~przygotowaniu publikacji do
+druku i~dlatego nie mo¿e sprostaæ nowym potrzebom, które stwarza
+postêp techniki. Coraz wiêksz± rolê odgrywaj± dzi¶ elektroniczne
+repozytoria, bazy danych, publikacje na CD-Romach oraz WWW.  Wyp³ywa
+te¿ st±d wa¿ny wniosek, ¿e tworzenie dokumentów wed³ug paradygmatu
+WYSIWYG nie jest efektywne i~stopniowo nale¿y oczekiwaæ powstawania,
+wdra¿ania i~rozpowszechniania siê systemów opartych na paradygmacie
+\emph{formatowania strukturalnego}.
+
+W~dokumencie formatowanym strukturalnie oznaczana jest struktura
+dokumentu a~nie okre¶lany jego wygl±d. Zwróæmy uwagê, ¿e uk³ad
+graficzny jest pochodn± struktury, tj. nadajemy jednolity wygl±d
+tytu³om rozdzia³ów, ¶ródtytu³ów, przypisów, jednakowo wyró¿niamy
+wyliczenia itp.  Uk³ad graficzny jak ju¿ wspominano mo¿e ulegaæ zmianie
+(np. wraz z~rozpowszechnianiem siê nowych technologii wydawniczych)
+ale tre¶æ i~struktura raczej nie, np. Biblia Gutenberga widziana z~tej
+perspektywy nie zmieni³a siê wcale.
+
+% Na koñcu tytu³ów, ¶ródtytu³ów, tytu³ów rysunków i tabel
+% _nie_ umieszcza siê kropki
+\chapter{Wprowadzenie do standardów SGML/XML}
+
+SGML~\cite{Goldfarb} jest to \emph{metajêzyk} s³u¿±cy do opisywania
+struktury i~zawarto¶ci dokumentów (standard ISO 8879).  Do
+podstawowych zalet takiego podej¶cia nale¿y: 
+\begin{itemize}
+\item
+jest to miêdzynarodowy
+standard dostêpny na wielu platformach sprzêtowo{\dywiz}systemowych;
+\item
+jest to
+jêzyk opisu \emph{ka¿dego\/} dokumentu, o~praktycznie nieograniczonych
+mo¿liwo¶ciach (\emph{rozszerzalno¶æ\/}) 
+\item
+umo¿liwia powtórne
+wykorzystywanie dokumentów, tak¿e w sposób inny od poprzedniego
+(np. tradycyjna ksi±¿ka i~dokument multimedialny utworzony z~tego
+samego dokumentu SGML-owego).
+\end{itemize}
+
+Standard s³u¿y jedynie do opisywania logicznej struktury dokumentów,
+nie determinuje ostatecznej formy prezentacji informacji, która mo¿e
+byæ docelowo przekszta³cana w~najró¿niejszy sposób. Dokument
+zakodowany z~wykorzystaniem SGML-a mo¿e s³u¿yæ jako postaæ wyj¶ciowa
+do formatowania tej samej informacji w~ró¿ny sposób i~prezentacji
+z~u¿yciem ró¿nych mediów np. w~formie drukowanej na papierze,
+w~postaci hipertekstu albo tekstowej bazy danych. Pozwala to
+zminimalizowaæ koszty\index{koszty}, ca³y cykl wydawniczy dokonuje siê
+na jednym dokumencie -- pliku SGML-owym, a~nie na wielu.
+    
+\section{Elementy sk³adowe systemu SGML/XML}
+
+Standard SGML/XML to specyfikacja techniczna metajêzyka~\cite{s.north,tei.intro}.
+ Za¶ systemem
+SGML/XML nazywamy \emph{zestaw narzêdzi i~¶rodków niezbêdnych do
+tworzenia, sk³adowania i~obróbki dokumentów z~wykorzystaniem tego
+standardu}\cite{tei.intro}\index{system XML|textbf}.  
+Typowy proces produkcji dokumentów w~standardzie SGML/XML
+podzielony jest na kilka czê¶ci. Najwa¿niejszymi elementami tego
+procesu s±~\cite[s.~45--47]{maler.devel}:
+    
+\begin{itemize}
+\item Klasyfikacja tworzonych dokumentów w~grupy i~wynikaj±cy z~tego
+  dobór definicji typu dokumentu\footnote{Definicja typu dokumentu DTD
+    to formalny opis pewnej klasy dokumentów, spis jej elementów
+    sk³adowych (znaczników i~ich atrybutów) oraz zasad ich stosowania
+    (hierarchii wystêpowania czy mo¿liwo¶ci skracania).}
+  (por.~punkt~\ref{s:dtd}).
+\item Wybraniu odpowiednich narzêdzi do tworzenia i~modyfikowania
+  dokumentów SGML/XML (edytory, konwertery, por.~punkt~\ref{s:edytor},
+  s.~\pageref{s:edytor})\footnote{Wybrany edytor winien w~maksymalnym
+    stopniu u³atwiaæ proces tworzenie dokumentów strukturalnych,
+    ró¿ni±cy siê od tego, jaki jest stosowany w~narzêdziach biurowych
+    typu edytor Word.}.
+\item Sprawdzenie poprawno¶ci oznaczenia dokumentów
+  (walidacja\index{walidacja}).
+\item Ustalenie metod sk³adowania zbiorów oznakowanych dokumentów.
+\item Ustalenie sposobu prezentacji oznaczonych dokumentów i~ich
+  formatów wyj¶ciowych -- przygotowanie odpowiednich specyfikacji
+  konwersji formatów i~dobór w³a¶ciwych do tego celu narzêdzi
+  (por.~punkty~\ref{s:dsssl} i~\ref{s:xsl}).
+\end{itemize}
+
+Ka¿dy z~wy¿ej wymienionych problemów stanowi pewne zadanie do
+wykonania, które mo¿e byæ w du¿ym stopniu lub ca³kowicie
+zautomatyzowane dziêki zastosowaniu odpowiednich narzêdzi, co jest
+jednym z~celów i~korzy¶ci stosowania systemu opartego na standardzie
+SGML/XML.
+
+\begin{figure}[!tbh]
+\centering 
+\includegraphics[width=.8\hsize]{schemat}
+\caption{Schemat archiwum\label{RYS.2}}
+\source{Opracowanie w³asne}
+\end{figure}
+
+\section{Opracowanie typu dokumentu\label{s:dtd}}
+Tworzenie DTD~\cite{maler.devel,maler.ex,db.guide} powinno zacz±æ siê
+od analizy posiadanych danych oraz potrzeb dotycz±cych dokumentów
+wynikowych i~informacji. Rezultatem analizy dokumentów jest
+wyspecyfikowanie~\cite[s.~212--218]{maler.ex} s³ownika \cite[s.~111A--118C]{tei.intro} takich elementów 
+oraz, dla ka¿dego typu
+dokumentu, zale¿no¶ci miêdzy tymi elementami. Z~tego powodu stworzenie
+dobrego DTD jest zadaniem nie³atwym. Ponadto DTD jest tylko czê¶ci±
+systemu SGML/XML; oprócz niego potrzebne s± narzêdzia do formatowania
+dokumentów, takie jak arkusze stylów DSSSL 
+czy te¿ XSL/XSLT\index{XSLT}.
+    
+Du¿e koszty implementacji przemawiaj± czêsto za rozwa¿eniem
+wykorzystania, czy te¿ adaptacji w~systemie SGML/XML udostêpnionych
+publicznie gotowych DTD. W~omawianym projekcie post±piono podobnie,
+ewentualne opracowanie w³asnego typu dokumentu odk³adaj±c na pó¼niej.
+Rozwa¿ano wstêpnie wykorzystanie trzech publicznie dostêpnych typów
+dokumentów: \texttt{etd} zdefiniowanego na potrzeby projektu
+\textit{Electronic Theses and Dissertations} w~Virginia Polytechnic
+Institute and State 
+University, \texttt{TEI}\index{TEI|see{Text Encoding Iniciative}} opracowanego w~ramach
+projektu 
+\textit{Text Encoding Iniciative\index{Text Encoding Iniciative}}
+ \cite{tei.intro} oraz
+DocBook opracowany przez konsorcjum firm, g³ównie sektora IT,
+u¿ywaj±cych technologii SGML/XML do tworzenia dokumentacji do swoich
+produktów~\cite{db.guide}.
+    
+\section{DocBook}
+\emph{DocBook DTD}\index{DocBook|(} to typ dokumentu definiuj±cy
+strukturê i~zawarto¶æ zbioru znaczników SGML, s³u¿±cych do
+dokumentacji oprogramowania i~ró¿nego rodzaju dokumentacje
+techniczne~\cite[s.~123]{db.guide}. Posiada ona bardzo rozbudowan±
+hierarchiê znaczników do budowy struktur ksi±¿ek, dokumentacji
+technicznej itp dokumentów.  DTD dla tego typu dokumentu jest dostêpne
+zarówno w~standardzie SGML jak i~XML. Dostêpna jest tak¿e uproszczona
+wersja DTD o~nazwie SimpleDocbook. Zalet± u¿ywania wersji uproszczonej
+jest du¿o ³atwiejsze pos³ugiwanie siê ni±, z~uwagi na znacznie
+mniejsz± liczbê znaczników, por.~tabela~\ref{tab:dtd-cmp}.
+
+\begin{table}[!tbh]
+\begin{tabular}{|l|l|l|} \hline
+Typ dokumentu & Liczba elementów & Liczba encji \\ \hline
+Docbook & 357 & 1814 \\ \hline
+SimpleDocBook  & 93  & 234 \\ \hline
+TEI & brak danych & 3 \\ \hline
+HTML & 98  & 234 \\ \hline
+\end{tabular}
+\caption{Porównanie wielko¶ci popularnych definicji 
+  typu dokumentu\label{tab:dtd-cmp}}
+\source{Obliczenia w³asne}
+\end{table}
+
+DocBook jest u¿ywany obecnie w~wiêkszo¶ci zarówno komercyjnych jak
+i~niekomercyjnych projektach tworzenia dokumentacji 
+komputerowej\footnote{Konstatuj±c brak tanich i~funkcjonalnych edytorów do pracy
+z~dokumentami SGML/XML nale¿y wspomnieæ o~jedynym dostêpnym w~chwili
+obecnej, efektywnym, tanim (darmowy) i~powszechnie dostêpnym na wielu
+platformach systemowo{\dywiz}sprzêtowych ¶rodowisku do tworzenia dokumentów
+strukturalnych jakim jest edytor Emacs...}\cite{tei.intro,s.north,xslt,bryan,beebe,lamport,XMLspec}
+(np. dokumentacja dla takich projektów jak: LDP -- \textit{Linux
+Documentation Project}, \textit{RedHat Gnome Desktop},
+\textit{Postgres SQL RDBMS}, \textit{PHP3 Hypertext Preprocesor} czy
+dokumentacja do systemu FreeBSD).\index{DocBook|)}
+    
+\section{Edytory sterowane sk³adni±\label{s:edytor}}
+
+Pierwszym elementem systemu SGML/XML jest edytor
+strukturalny\index{edytor!strukturalny}, zwany te¿ edytorem sterowanym
+sk³adni±. W~tradycyjnych edytorach dzia³aj±cych wed³ug paradygmatu
+WYSIWYG\index{WYSIWYG} autor wprowadzaj±c tekst okre¶la na bie¿±co
+jego wygl±d, maj±c zarówno w~jednym jak i~drugim przypadku du¿±
+swobodê.  Taki sposób pracy w~przypadku masowego tworzenia dokumentów
+jest zupe³nie nieefektywny. W~szczególno¶ci dotyczy to pracy wielu
+autorów nad jednym lub wieloma dokumentami o~zuniformizowanym
+formacie, czy te¿ tworzenia dokumentów, o~których z~góry wiadomo, ¿e
+bêd± prezentowane w~ró¿ny sposób.
+
+Pewnym rozwi±zaniem opisywanych wy¿ej problemów jest wykorzystanie
+szablonów, w~które, od jakiego¶ czasu s± wyposa¿ane wszystkie
+popularne edytory biurowe\index{edytor!biurowy}.  Pos³uguj±c siê
+szablonami, autor nie definiuje wygl±du samodzielnie tylko wype³nia
+tre¶ci± zdefiniowany z~góry szablon dokumentu.  
+Stanowi±c niew±tpliwy
+krok do przodu takie podej¶cie nie rozwi±zuje jednak wszystkich
+problemów.
+
+Komercyjne edytory SGML, s± w~chwili obecnej ci±gle bardzo
+drogie, za¶ oprogramowanie rozprowadzane na ró¿nego rodzaju licencjach
+\emph{Open Source\/} nie oferuje jeszcze wygody pracy, do której
+przyzwyczaili siê u¿ytkownicy edytorów biurowych.  
+
+\section{Emacs i~psgml}
+
+Konstatuj±c brak tanich i~funkcjonalnych edytorów do pracy
+z~dokumentami SGML/XML nale¿y wspomnieæ o~jedynym dostêpnym w~chwili
+obecnej, efektywnym, tanim (darmowy) i~powszechnie dostêpnym na wielu
+platformach systemowo{\dywiz}sprzêtowych ¶rodowisku do tworzenia dokumentów
+strukturalnych jakim jest edytor Emacs\index{edytor!Emacs} z~pakietem
+psgml. ¦rodowisko to wspomaga autora poprzez:
+kolorowanie sk³adni dokumentów SGML i~aplikacji SGML, automatyczne
+uzupe³nianie brakuj±cych znaczników, automatyczn± kontrolê jakie
+w~danym kontek¶cie mo¿na wstawiaæ znaczniki i~atrybuty, wy¶wietlanie
+informacje odno¶nie mo¿liwych i~domy¶lnych warto¶ci. 
+Wszystkie funkcje s± dostêpne za pomoc±
+odpowiednie skrótów klawiszowych a~tak¿e dostêpne poprzez wybór
+wska¼nikiem myszy odpowiedniej pozycji z~menu. Pakiet ten umo¿liwia
+równie¿ wywo³anie zewnêtrznego parsera\index{parser} SGML celem
+weryfikacji poprawno¶ci dokumentu.
+      
+\chapter{Narzêdzia i~standardy pokrewne}
+
+Systemy SGML, ze wzglêdu na mnogo¶æ funkcji jakie spe³niaj± i~ich
+kompleksowe podej¶cie do oznakowywania i~przetwarzania dokumentów
+tekstowych, s± bardzo skomplikowane. Mo¿emy wyró¿niæ dwa podej¶cia do
+budowy takich systemów.  Z~jednej strony, buduje siê systemy
+zindywidualizowane, oparte o~specyficzne narzêdzia tworzone w~takich
+jêzykach, jak: C, C++, Perl czy Python. Edytory strukturalne, filtry
+do transformacji formatów czy parsery\index{parser} i~biblioteki
+przydatne do konstrukcji dalszych narzêdzi, tworzone s± wed³ug potrzeb
+okre¶lonych, pojedynczych systemów.
+    
+Z~drugiej strony, twórcy oprogramowania postanowili pój¶æ krok dalej
+i~po³±czyæ te ró¿ne narzêdzia w~jedn± ca³o¶æ. T± ca³o¶æ mia³ stanowiæ
+DSSSL lub jego XML-owy odpowiednik -- standard XSL. Ze wzglêdu na
+oferowane mo¿liwo¶ci mo¿na twierdziæ, ¿e tworzenie i~u¿ywanie narzêdzi
+implementuj±cych standard DSSSL/XSL, jest najw³a¶ciwszym
+podej¶ciem. Przemawiaj± za tym ró¿ne argumenty, ale najwa¿niejszym
+z~nich jest to, ¿e mamy tu mo¿liwo¶æ stworzenia niezale¿nego od
+platformy programowej i~narzêdziowej zbioru szablonów -- przepisów jak
+przetwarzaæ dokumenty SGML/XML.
+    
+\section{Przetwarzanie dokumentów SGML -- standard DSSSL\label{s:dsssl}}
+
+DSSSL (\textit{Document Style Semantics and Specification Language\/})
+-- to miêdzynarodowy standard ¶ci¶le zwi±zany ze standardem SGML.
+Standard ten, mo¿na podzieliæ na nastêpuj±ce czê¶ci:
+
+\begin{itemize}
+\item jêzyk transformacji (\textit{transformation language\/}).  To
+  definicja jêzyka s³u¿±cego do transformacji dokumentu oznaczonego
+  znacznikami zgodnie z~pewnym DTD na dokument oznaczony zgodnie
+  z~innym~DTD.
+\item jêzyk stylu (\textit{style language\/}) opisuj±cy sposób
+  formatowania dokumentów SGML.
+\item jêzyk zapytañ (\textit{query language\/}) s³u¿y do
+  identyfikowania poszczególnych fragmentów dokumentu SGML.
+\end{itemize}
+
+Opisane g³ówne czê¶ci sk³adowe standardu DSSSL daj± obraz tego, jak
+wiele aspektów przetwarzania zosta³o zdefiniowanych i~jak
+skomplikowany jest to problem. Jest to g³ównym powodem tego, ¿e mimo
+up³ywu kilku lat od zdefiniowania standardu nie powsta³y ani
+komercyjne ani wolnodostêpne aplikacje wspieraj±ce go
+w~ca³o¶ci. Istniej± natomiast \emph{nieliczne\/} narzêdzia realizuj±ce
+DSSSL w~ograniczonym zakresie, g³ównie w~czê¶ci definiuj±cej jêzyk
+stylu, który odpowiada za opatrzenie dokumentu czysto strukturalnego
+w~informacje formatuj±ce. Daje to mo¿liwo¶æ publikacji dokumentów SGML
+zarówno w~postaci elektronicznej, hipertekstowej czy te¿ drukowanej.
+      
+\section{Przetwarzanie dokumentów XML -- standard XSL\label{s:xsl}}
+
+Tak jak XML jest \emph{uproszczon±\/} wersj± standardu SGML, tak XSL
+jest uproszczonym odpowiednikiem standardu DSSSL. W~szczególno¶ci,
+wyró¿niæ mo¿na w~tym standardzie nastêpuj±ce czê¶ci sk³adowe:
+
+\begin{itemize}
+\item jêzyk transformacji (XSLT) To definicja jêzyka s³u¿±cego do
+  transformacji dokumentu\index{XSLT|emph}.      
+\item jêzyk zapytañ (XPath) s³u¿y do identyfikowania poszczególnych
+  fragmentów dokumentu.
+\item jêzyk stylu deefiniuj±cy sposób formatowania dokumentów XML.
+\end{itemize}
+
+\chapter{Przegl±d dostêpnych narzêdzi\label{PRZEGLAD.NARZEDZI}}
+
+W~celu wykorzystania standardu SGML/XML do przetwarzania dokumentów,
+niezbêdne jest zebranie odpowiedniego zestawu narzêdzi. Narzêdzi do
+przetwarzania dokumentów SGML/XML jest wiele. S± to zarówno ca³e
+systemy zintegrowane, jak i~poszczególne programy, biblioteki czy
+skrypty wspomagaj±ce.
+    
+\section{Narzêdzia do przegl±dania dokumentów SGML/XML}
+
+Do tej kategorii oprogramowania zaliczamy przegl±darki dokumentów
+SGML/XML oraz serwery sieciowe wspomagaj±ce standard SGML/XML, przy
+czym rozwi±zañ wspieraj±cych standard XML jest ju¿ w~chwili obecnej
+du¿o wiêcej i~s± du¿o powszechniejsze.
+
+Je¿eli chodzi o~przegl±darki to zarówno Internet Explorer jak
+i~Netscape umo¿liwiaj± bezpo¶rednie wy¶wietlenie dokumentów XML;
+poniewa¿ jednak nie wspieraj± w~ca³o¶ci standardu XML, prowadzi to
+ci±gle do wielu problemów\footnote{Z~innych mniej popularnych
+  rozwi±zañ mo¿na wymieniæ takie aplikacje, jak: HyBrick SGML/XML
+  Browser firmy Fujitsu Limited, Panorama Publisher firmy InterLeaf
+  Inc, DynaText firmy Inso Corporation czy darmowy QWeb. W~przypadku
+  serwerów zwykle dokonuj± one transformacji ,,w~locie'' ¿±danych
+  dokumentów na format HTML (rzadziej bezpo¶rednio wy¶wietlaj±
+  dokumenty XML).  Ta kategoria oprogramowania ma, z~punktu widzenia
+  projektu, znaczenie drugorzêdne.}.
+      
+\section{Parsery SGML/XML}
+Program \texttt{nsgmls} (z~pakietu \texttt{SP} Jamesa Clarka) jest
+doskona³ym parserem\index{parser} dokumentów SGML, dostêpnym
+publicznie.  Parser \texttt{nsgmls} jest dostêpny w~postaci ¼ród³owej
+oraz w~postaci programów wykonywalnych przygotowanych na platformê
+MS~Windows, Linux/Unix i~inne. Oprócz analizy poprawno¶ci dokumentu
+parser\index{parser} ten umo¿liwia równie¿ konwersjê danych do formatu
+ESIS\index{ESIS}, który wykorzystywany jest jako dane wej¶ciowe przez
+wiele narzêdzi do przetwarzania i~formatowania dokumentów SGML.
+Dodatkowymi, bardzo przydatnymi elementami pakietu \texttt{SP} s±:
+program \texttt{sgmlnorm} do normalizacji, program \texttt{sx} s³u¿±cy
+do konwersji dokumentu SGML na XML oraz biblioteki programistyczne,
+przydatne przy tworzeniu specjalistycznych aplikacji s³u¿±cych do
+przetwarzania dokumentów SGML.
+      
+W~przypadku dokumentów XML publicznie dostêpnych, parserów jest
+w~chwili obecnej kilkadziesi±t. Do popularniejszych zaliczyæ mo¿na
+Microsoft Java XML Parser firmy Microsoft, LT XML firmy Language
+Technology Group, Exapt oraz XP (James Clark)
+      
+\section{Wykorzystanie jêzyków skryptowych}
+      
+\section{Wykorzystanie szablonów XSL}
+
+Stosuj±c wersjê XML typu DocBook mo¿na wykorzystaæ szablony stylów
+przygotowane w~standardzie XSLT\index{XSLT}
+ (autor N.~Walsh). W~chwili obecnej
+s± dostêpne narzêdzia umo¿liwiaj±ce przetworzenie dokumentów XML do
+postaci drukowanej (Adobe PDF, por. \cite{pdf.spec}) 
+oraz hipertekstowej (HTML, por. \cite{bryan,XMLspec,Herwinen-Pract}).
+
+Podobnie jak w~przypadku szablonów DSSSL, szablony stylów XSL s±
+sparametryzowane i~udokumentowane i~dziêki temu ³atwe w~adaptacji. Do
+zamiany dokumentu XML na postaæ prezentacyjn± mo¿na wykorzystaæ jeden
+z~dostêpnych publicznie procesorów XSLT\index{XSLT}
+(por.~tabela~\ref{zest:proces:xslt}).
+
+\begin{table}[!htb]
+\begin{tabular}{|l|l|l|} \hline
+Nazwa & Autor      & Adres URL \\ \hline
+\texttt{sablotron} & Ginger Alliance & \url{http://www.gingerall.com} \\ \hline
+\texttt{Xt}\index{Xt@\texttt{Xt}}
+  & J.~Clark & \url{http://www.jclark.com} \\ \hline
+\texttt{4XSLT}     & FourThought & \url{http://www.fourthought.com} \\ \hline
+\texttt{Saxon}     & Michael Kay &  \url{http://users.iclway.co.uk/mhkay/saxon} \\ \hline
+\texttt{Xalan}\index{Xalan@\texttt{Xalan}}     
+  & Apache XML Project & \url{http://xml.apache.org} \\ \hline
+\end{tabular}
+\caption{Publicznie dostêpne procesory XLST\label{zest:proces:xslt}}
+\source{Opracowanie w³asne}
+\end{table}
+
+Wykorzystuj±c szablony, na podstawie dokumentu XML otrzymujemy
+bezpo¶rednio dokument HTML. W~przypadku wersji drukowanych sprawa jest
+bardziej skomplikowana (por.~rys.~\ref{fig:xsl-fo}).
+
+\begin{figure}[!tbh]
+\centering 
+\includegraphics[width=.8\hsize]{fo-structure}
+\caption{Ogólna struktura dokumenu XSL-FO\label{fig:xsl-fo}}
+\source {Opracowanie w³asne}
+\end{figure}
+
+XSL:FO jest skomplikowanym jêzykiem o~du¿ych mo¿liwo¶ciach,
+zawieraj±cym ponad 50 ró¿nych ,,obiektów formatuj±cych'', pocz±wszy od
+najprostszych, takich jak prostok±tne bloki tekstu poprzez wyliczenia,
+tabele i~odsy³acze. Obiekty te mo¿na formatowaæ wykorzystuj±c przesz³o
+200 ró¿nych w³a¶ciwo¶ci (\emph{properties\/}), takich jak: kroje,
+odmiany i~wielko¶ci pisma, odstêpy, kolory itp.  
+W~tym dokumencie przedstawione jest absolutne miniumum informacji 
+na temat standardu XSL:FO.
+
+Ca³y dokument XSL:FO zawarty jest wewn±trz elementu \texttt{fo:root}.
+Element ten zawiera (w~podanej ni¿ej kolejno¶ci):
+ %
+\begin{itemize}
+\item dok³adnie jeden element \texttt{fo:layout-master-set} zawieraj±cy
+  szablony okre¶laj±ce wygl±d poszczególnych stron oraz sekwencji
+  stron (te ostatnie s± opcjonalne, ale typowo s± definiowane);
+\item zero lub wiêcej elementów \texttt{fo:declarations};
+\item jeden lub wiêcej elementów \texttt{fo:page-sequance}
+ zawieraj±cych tre¶æ formatowanego dokumentu wraz z~opisem
+ jego sformatowania i~podzia³u na strony.
+\end{itemize}
+
+%%
+\chapter{Model Akceptacji Technologii \label{TAM-def-punkt}}
+\section{Podstawowe informacje \label{TAM-def}}
+
+Model Akceptacji Technologii (\emph{Technology Acceptance Model}, TAM)
+jest najczê¶ciej wykorzystywan± teori± obja¶niaj±c± wykorzystanie
+i~akceptacjê systemów informacyjnych w~praktyce badawczej Informatyki
+Ekonomicznej~\cite{VenkateshEtAl03,VenkateshDavis00}.
+Lee i inni~\cite{LeeKozarLarsen2003} okre¶laj± model TAM jak
+,,najczê¶ciej stosowan± teoriê opisuj±c± 
+indywidualn± akceptacjê systemów informacyjnych''.
+Model TAM zosta³ zaadaptowany z~rozwiniêtej na gruncie psychologii
+spo³ecznej teorii uzasadnionego dzia³ania\index{teoria!uzasadnionego
+  dzia³ania} Ajzena i~Fishbeina (\emph{Theory of Reasoned Action},
+TRA) i~teorii planowanego dzia³ania\index{teoria!planowanego dzia³ania} (\emph{Theory of Planned Behaviour}, TPB) 
+bêd±cej jej
+rozwiniêciem \cite{FishbeinAjzen1975,Ajzen1991}.  Wed³ug teorii uzasadnionego dzia³ania
+dzia³anie poprzedza \emph{intencja}\index{intencja}, która z~kolei
+kszta³tuje siê pod wp³ywem dwóch czynników: \emph{subiektywnej
+  normy\/}\footnote{Subiektywne normy\index{normy subiektywne}\label{SN-def}
+  (SN, \emph{subjective norms\/}) to ,,przekonania jednostki na ile jej
+  dzia³ania bêd± akceptowane na tak lub nie przez wa¿ne dla tej
+  jednostki osoby''~\cite[s.~302]{Ajzen1991} za
+  \cite[s.~187]{VenkateshDavis00}.}
+oraz~\emph{postawy\/}\footnote{Postawa wzglêdem zachowania
+  (ATT, \emph{attitude toward behaviour\/}), to przekonania wzglêdem
+  konsekwencji zachowania oraz ocena tych konsekwencji dla jednostki.}
+wzglêdem tego zachowania.  Wreszcie postawy wynikaj± z~przekonañ
+(\emph{beliefs\/}) wzglêdem u¿ytkowania (systemów informacyjnych w~tym
+przypadku). 
+Teoria planowanego dzia³ania\index{teoria!planowanego dzia³ania} 
+jest rozszerzeniem TRA i~zak³ada, ¿e dzia³ania kszta³tuje
+oprócz norm subiektywnych i~postaw tak¿e trzeci czynnik okre¶lany jako
+\index{kontrola behawioralna}\emph{postrzegana kontrola 
+behawioralna\/}\footnote{Postrzegana kontrola 
+behawioralna\label{TPB-def} (PBC, \emph{perceived behavioural control\/}) to
+przekonanie co do mo¿liwo¶ci wykonania dzia³ania~\cite{Ajzen-tpb-www}.
+Ajzen wskazuje na podobieñstwo PBC z~czynnikiem samoskuteczno¶ci
+z~teorii spo³ecznego uczenia S.~Bandury~\cite[s.~184]{Ajzen1991,Bandura1994}. } .
+PBC jest wykorzystywany w~rozszerzonych wersjach modelu TAM, por. przyk³adowo \cite{VenkateshEtAl03} lub
+\cite{MathiesonEtAl01}.
+
+TRA/TBP to ogólny model zachowania a~jego konkretyzacja
+polega m.in. na okre¶leniu przekonañ, które s± istotne dla zachowania
+bêd±cego przedmiotem zainteresowania badacza. Inne przekonania
+determinuj± palanie b±d¼ nie palenie tytoniu a~inne u¿ywanie b±d¼ nie
+u¿ywanie aplikacji komputerowych.  Davis postuluje, ¿e kluczow± rolê
+odgrywaj± dwa przekonania\footnote{Ajzen i~Fishbein rekomeduj± wiêcej
+  -- od piêciu do dziewiêciu
+  przekonañ~\cite[s.~218]{FishbeinAjzen1975}.} nazwane przez niego
+postrzegana u¿yteczno¶æ\index{postrzegana!u¿yteczno¶æ} \emph{preceived
+  usefulness\/}) oraz postrzegana ³atwo¶æ
+u¿ytkowania\index{postrzegana!³atwo¶æ u¿ytkowania}.
+(PEOU, \emph{perceived ease of~use\/}).
+
+Pierwsze przekonanie jest okre¶lone
+jako ,,stopieñ przekonania u¿ytkownika, ¿e korzystanie z~okre¶lonego
+systemu zwiêkszy jego efektywno¶æ
+pracy''~\cite{DavisetAl1989,Davis1989}.  Z~kolei postrzegana ³atwo¶æ
+u¿ytkowania jest definiowana jako ,,stopieñ przekonania u¿ytkownika,
+¿e korzystanie z~okre¶lonego systemu bêdzie
+³atwe''~\cite{DavisetAl1989,Davis1989}. Skale pomiarowe dla obu
+czynników zosta³y opracowane i~zweryfikowne w~\cite{Davis1989} oraz
+w~\cite{AdamsNelsonTodd1992}.
+Reasumuj±c:
+,,klasyczny'' model TAM zawiera piêæ czynników
+(por.~rys.~\ref{r1}): postrzegana u¿yteczno¶æ (PU), postrzegana
+³atwo¶æ u¿ytkowania (PEOU), postawa wobec u¿ywania (ATT), intencja
+u¿ywania (BI) oraz wykorzystanie (USE)\footnote{Czynniki ATT oraz BI
+  s± wprost zaadaptowane z~modeli TRA/TPB.}.
+
+\begin{figure}[!tbh]
+  \includegraphics[width=\textwidth]{./TAM-pl}
+\caption{Model Akceptacji Technologii, opracowanie w³asne za~\cite{DavisetAl1989}}
+\label{r1-TAM}
+\end{figure}
+
+Model TAM nie zawiera czynnika
+\emph{norm subiektywnych}\index{normy subiektywne}, który to czynnik jest wed³ug hipotez
+TRA/TBP istotnym determinantem intencji~\cite{FishbeinAjzen1975},
+\cite[s.~150]{TaylorTodd95} oraz \cite[s.~59--60]{Burton-JonesHubona05}.  
+Davis upro¶ci³ swój model usuwaj±c z~niego czynnik \emph{norm
+  subiektywnych\/} poniewa¿, po pierwsze ich wp³yw
+w~przeprowadzonych przez niego eksperymentach nie by³ znacz±cy, 
+a~po drugie
+stosowane do pomiaru \emph{norm subiektywnych\/} skale psychometryczne
+by³y w~jego opinii s³abe~\cite[s.~986]{DavisetAl1989}\footnote{Ta decyzja by³a
+  s³uszna w~sytuacji nasycenie organizacji w~technologiê IT by³o
+  niskie, gdy u¿ytkownicy pos³ugiwali siê prostymi systemami, a~ich
+  wykorzystanie w~organizacji by³o dobrowolne -- typowa sytuacji
+  w~koñcu lat osiemdziesi±tych. 
+Powstaje pytanie na ile sytuacja powy¿sza jest w~dalszym ci±gu aktualna--wspó³cze¶nie
+typowe jest raczej pos³ugiwanie siê aplikacjami wymagajacymi uprzedniego
+intensywnego szkolenia a~do korzystania z~której pracownik jest zobowi±zany. 
+Przyk³adami niech bêd± systemy zarz±dzania organizacj± typu ERP czy systemy 
+EDI/IOS pozwalaj±ce
+na wymianê danych pomiêdzy organizacjami.}. 
+Teoria TRA/TBP zak³ada ponadto, ¿e przekonania wyja¶niaj± 
+intencje \emph{wy³±cznie\/}, za po¶rednictwem norm subiektwych i~postawy 
+(oraz kontroli behawioralnej\index{kontrola behawioralna} w~przypadku TPB)\footnote{Innymi s³owy 
+ normy subiektywne i~postawy w~ca³o¶ci mediuj± wp³yw zmiennych zewnêtrznych.} podczas gdy w~oryginalnym
+modelu TAM\index{model!TAM|(} (por.~rys.~\ref{r1-TAM}) 
+postulowana jest  statystycznie istotna bezpo¶rednia zale¿no¶æ tak¿e pomiêdzy PU-BI.
+Pó¼niejsze badania potwierdzi³y empirycznie, ¿e istotnie w modelu TAM istnieje zwi±zek pomiêdzy
+PU-BI. W rezultacie w~pó¼niejszych wersjach modelu TAM postawy (ATT)
+zosta³y usuniête a czynniki
+PU/PEU determinuj± bezpo¶rednio intencje\footnote{Por. 
+przyk³adowo \cite{IgbariaetAl97,Burton-JonesHubona05,VenkateshDavis00}.}.
+
+TAM zak³ada, ¿e \index{zmienne!zewnêtrzne}\emph{zmienne zewnêtrzne\/} (charakterystyka systemu IT,
+charakterystyka u¿ytkownika, czynniki organizacyjne) wp³ywaj±
+\emph{po¶rednio\/} na intencje determinuj±c wielko¶æ PU/PEOU~\cite[s.~187]{VenkateshDavis00},
+przy czym wp³yw czynnika PU jest znacz±co wiêkszy ni¿ PEOU. Ponadto wykorzystanie {\SITI}
+mo¿e byæ przewidywane na podstawie intencji.
+Zamiarem Davisa by³o opracowanie  ,,prostego, teoretycznie 
+uzasadnionego modelu, zdolnego do obja¶nienia czynników 
+akceptacji systemów komputerowych w~sposób ogólny, to jest dla ró¿nych grup u¿ytkowników
+koñcowych\index{u¿ytkownik koñcowy} i~ró¿nych rodzajów systemów [...] TAM ma stanowiæ teoretyczn±
+podstawê obja¶niaj±c± w~jaki sposób zewnêtrzne czynniki wp³ywaj± 
+na przekonania, postawy i~intencje''~\cite[s.~985]{Davis1989}.
+Z~uwagi na trudno¶æ z~pomiarem u¿ytkowania systemu wiele badañ pos³uguje siê
+modelem czterosk³adnikowym zak³adaj±cym, 
+¿e wysoka warto¶æ BI determinuje wysok± warto¶æ u¿ytkowania, por.~\cite{TaylorTodd95}\footnote{W~przegl±dzie
+145 artyku³ów wykorzystuj±cych TAM wskazuje siê, 
+¿e 43\% badañ nie zawiera³o relacji pomiêdzy
+intencj± a~faktycznym wykorzystaniem~\cite{ShumailaetAl2007a}.}.
+
+Model TAM\footnote{W~zwi±zku z~tym skala formatywna jest kontekstowa
+  i~powinna byæ adaptowana do potrzeb konkretnego badania.
+  Przyk³adowo pytanie o~dostêp do danych ma sens w~¶rodowisku
+  bazodanowym, w~którym u¿ytkownicy maj± -- podyktowany wzglêdami
+  bezpieczeñstwa --ograniczony dostêp do danych.  W~przypadku
+  aplikacji biurowej czy programu komunikacyjnego takie pytanie mo¿e
+  nie mieæ sensu.} porównywano ze ,,zwyk³ym'' modelem TPB nie zawieraj±cym
+czynników pierwszego stopnia w~którym postawa, normy subiektywne oraz
+kontrola behavioralna by³y mierzone bezpo¶rednio\footnote{Poniewa¿
+  skala pomiarowa obejmowa³a zaledwie 9~pytañ wiêc mo¿na mieæ powa¿ne
+  zastrze¿enia co do precyzji
+  pomiaru~\cite[s.~173--174]{TaylorTodd95}.}.  ,,Zwyk³y'' model TPB
+oraz model TAM zawiera³y po trzy czynniki obja¶niaj±ce intencje oraz
+wykorzystanie systemu.  Wykorzystanie TPB nie poprawi³o
+prognostycznych w³a¶ciwo¶ci modelu poniewa¿ oba wyja¶nia³y po~34\%
+zmienno¶ci wykorzystania systemu.  W~modelu zdekomponowanym wszystkie
+czynniki pierwszego stopnia za wyj±tkiem PEOU oraz kompatybilno¶ci
+okaza³y siê istotne, za¶ model ma nieznacznie lepsze w³a¶ciwo¶ci
+prognostyczne poniewa¿ udzia³ wyja¶nianej zmienno¶ci wykorzystania
+wzrós³ do 36\%.  Taylor i~Todd przyznaj±, ¿e prognostyczne w³a¶ciwo¶ci
+modelu poprawi³y siê w~niewielkim stopniu, zw³aszcza uwzglêdniaj±c
+wzrost z³o¿ono¶ci modelu (13 zamiast 5 czynników) ale uwa¿aj±, ¿e
+model zdekomponowany lepiej obja¶nia przyczyny wykorzystania {\SITI}.
+Przyk³ady zastosowania modelu wykorzystuj±cego teoriê planowanego
+dzia³ania do okre¶lenia akceptacji {\SITI} mo¿na tak¿e znale¼æ
+w~pracach~\cite{LinChanWei06,HungChang05,HsuChiu2004}
+oraz~\cite{Mathieson1991}.
+
+
+Model TAM by³ wielokrotnie wykorzystany w~badaniu akceptacji ró¿nych
+systemów komputerowych: 
+aplikacje biurowe takie jak arkusze kalkulacyjne 
+i edytory (\cite{Burton-JonesHubona05,,Burton-JonesHubona05,Davis1989,DavisetAl1989,DengDoll2005,Burton-JonesHubona05}), 
+technologie komunikacyjne, poczta elektroniczna \cite{GefenStraub1997,Burton-JonesHubona05,MathiesonEtAl01}
+systemy bazodanowe,
+aplikacje specjalistyczne~\cite{VenkateshDavis00} 
+systemy WWW~\cite{ChauLai03,SlomkaetAl2007}. 
+Przegl±d wykorzystania modelu TAM do badania akceptacji 
+mo¿na znale¼æ w~\cite{VenkateshEtAl03,ShumailaetAl2007a,ShumailaetAl2007b}
+oraz \cite{Han03}. Kilka badañ wykorzystuj±cych omawiany model jest na tyle interesuj±ca, ¿e poni¿ej
+przedstawiamy je bardziej szczegó³owo.
+
+
+%
+% Zakoñczenie 
+\summary
+Mo¿liwo¶ci, jakie stoj± przed archiwum prac magisterskich opartych na
+XML-u, s± ograniczone jedynie czasem, jaki nale¿y po¶wiêciæ na pe³n±
+implementacjê systemu. Nie ma przeszkód technologicznych do stworzenia
+co najmniej równie doskona³ego repozytorium, jak ma to miejsce w
+przypadku ETD. Je¿eli chcemy w pe³ni uczestniczyæ w rozwoju nowej ery
+informacji, musimy szczególn± uwagê przyk³adaæ do odpowiedniej
+klasyfikacji i archiwizacji danych. S±dzê, ¿e jêzyk XML znacznie to
+upraszcza.
+
+%
+% Za³±czniki (opcjonalnie):
+\appendix
+\chapter{Tytu³ za³±cznika jeden}
+
+Tre¶æ za³±cznika jeden. Tre¶æ za³±cznika jeden. Tre¶æ za³±cznika jeden
+Tre¶æ za³±cznika jeden. Tre¶æ za³±cznika jeden.
+Tre¶æ za³±cznika 
+jeden\index{¿ó³w}\index{¼d¼b³o}\index{zebra}.
+
+\chapter{Tytu³ za³±cznika dwa}
+
+Tre¶æ za³±cznika dwa. Tre¶æ za³±cznika dwa. Tre¶æ za³±cznika dwa
+Tre¶æ za³±cznika dwa. Tre¶æ za³±cznika dwa.
+Tre¶æ za³±cznika dwa\index{system XML}.
+
+%\include bib.tex
+\bibliography{mgr-main}
+
+%
+% Spis tabel (je¿eli jest potrzebny):
+\listoftables
+%
+% Spis rysunków (je¿eli jest potrzebny):
+\listoffigures
+
+%
+% Skorowidz (opcjonalnie)
+\printindex
+
+\end{document}
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: t
+%%% coding: latin-2
+%%% End: 

@@ -1,0 +1,668 @@
+%& --translate-file=il2-pl
+% *** Uwaga *** Tekst w tym pliku nie ma specjalnie sensu i s³u¿y za twz. wype³niacz ***
+%
+% Plik jest przyk³adem wykorzystania klasy wzmgr do formatowania 
+% pracy magisterskiej przygotowanej na Wydziale Zarz±dzania 
+% Uniwersytetu Gdañskiego.  
+%
+% Szkielet struktury tego dokumentu mo¿na wykorzystywaæ formatuj±c 
+% w³asn± pracê. Tre¶æ dokumentu nie ma specjalnie sensu i raczej
+% nie nadaje siê jako wiêkszy czy mniejszy fragment w³asnej pracy.
+%
+% (c) T. Przechlewski (tomasz@gnu.univ.gda.pl) 2002--2005, 2009.
+%
+% Rozpowszechnianie tego pliku jest dozwolone na zasadach 
+% licencji GNU (http://www.gnu.org).
+%
+% Deklaracja klasy pracamgr, dostepne opcje:
+%  * magisterska -- praca magisterska (warto¶æ domy¶lna)
+%  * licencjacka -- praca licencjacka
+%  * skorowidz   -- tworzenie skorowidza
+%  * palatino    -- sk³ad krojem Palatino (domy¶lnie Computer Modern)
+%  * xodstep     -- podwójny odstêp miêdzy wierszami
+%  * brudnopis   -- zalecany na etapie  tworzenia pracy
+%
+\documentclass[skorowidz,brudnopis,palatino,xodstep]{wzmgr}
+%\documentclass[skorowidz,brudnopis,xodstep]{wzmgr}
+
+% Opcjonalnie identyfikator dokumentu (drukowany tylko 
+% z w³±czon± opcj± `brudnopis'):
+\nrwersji {0.1}
+
+% Je¿eli Twój TeX psuje polskie znaki, uaktywnij poni¿sz± deklaracjê:
+%\usepackage[latin2]{inputenc}
+
+%%%
+% Przyk³adowe wykorzystanie pakietu fancyhdr do zdefiniowania
+% tzw. ¿ywej paginy (por. np. http://www.maths.soton.ac.uk/~ap/latex/fancyhdr.html)
+%\usepackage{fancyhdr}
+%\pagestyle{fancy}
+%\fancyhf{}
+%% 'Klasycznie', tj. wszystko w paginie górnej:
+%\fancyhead[LE,RO]{\textbf{\thepage}}
+%\fancyhead[LO]{\small\sffamily \nouppercase{\rightmark}}
+%\fancyhead[RE]{\small\sffamily \nouppercase{\leftmark}}
+%%
+%\fancyfoot[LE,RO]{\textbf{\thepage}}
+%\fancyhead[LE]{\small\sffamily \nouppercase{\leftmark}}
+%\fancyhead[RO]{\small\sffamily \nouppercase{\rightmark}}
+%%
+%\renewcommand{\headrulewidth}{0.4pt}
+%\renewcommand{\footrulewidth}{0.0pt}
+%%
+
+%% Je¿eli nie podano szko³y zostanie wpisane na stronie tytu³owej:
+%%     `Uniwersytet Gdañski -- Wydzia³ Zarz±dzania'
+%%\UniversityName{Wy¿sza Szko³a Zarz±dzania w Kwidzynie}
+
+%
+% Dane autora(ów):
+\author   {Walenty Szczêsny}
+\nralbumu {rr000000001}
+\email    {walenty_szcz@szczesny.com.pl}
+
+\author   {Monika A.~Szczêsna-Wo¶}
+\nralbumu {rr000000002}
+
+% Tytu³ pracy:
+\title    {Dokumenty strukturalne: teoria i~zastosowania}
+
+% Kierunek, tj. katedra/instytut promotora:
+\kierunek {Informatyka Ekonomiczna}
+
+% Rok obrony:
+\date     {2001}
+
+% Je¿eli nie podano miejsca zostanie wpisany `Sopot'
+\miejsce {Wejherowo}
+
+% Tytu³ naukowy, imiê i nazwisko promotora, np.:
+%  dr Jan Kowalski
+%  prof. dr hab.~Jan Kowalski 
+% itp...
+\opiekun  {ks.~prof. Jan Kowalski}
+
+%
+% Miejsce na deklaracje w³asnych poleceñ:
+\newcommand{\filename}[1]{\texttt{#1}}
+% Cytowanie autor-rok
+% \bibliographystyle{papalike}
+
+\begin{document}
+
+% Streszczenie/S³owa kluczowe:
+\begin{abstract}
+  Aczkolwiek w~ci±gu ostatnich lat sk³ad tekstu wspomagany komputerowo
+  ca³kowicie wyeliminowa³ stosowanie tradycyjnych technik drukarskich,
+  to podobny proces w~przypadku publikacji elektronicznych czyli
+  publikacji, które w~ogóle nie wykorzystuj± papieru, a~no¶nikem
+  informacji staje siê ekran komputera nie jest obserwowany.
+\end{abstract}
+\keywords{SGML, XML, XSL, dokumenty elektroniczne, dokumenty strukturalne}
+
+% Tytu³/spis tre¶ci
+\maketitle
+%
+% Wstêp
+\introduction
+
+Aczkolwiek w~ci±gu ostatnich lat sk³ad tekstu wspomagany
+komputerowo ca³kowicie wyeliminowa³ stosowanie tradycyjnych technik
+drukarskich, to podobny proces w~przypadku publikacji elektronicznych
+czyli publikacji, które w~ogóle nie wykorzystuj± papieru, a~no¶nikem
+informacji staje siê ekran komputera nie jest obserwowany.
+
+Formatowanie wizualne, powsta³o z~my¶l± o~przygotowaniu publikacji do
+druku i~dlatego nie mo¿e sprostaæ nowym potrzebom, które stwarza
+postêp techniki. Coraz wiêksz± rolê odgrywaj± dzi¶ elektroniczne
+repozytoria, bazy danych, publikacje na CD-Romach oraz WWW.  Wyp³ywa
+te¿ st±d wa¿ny wniosek, ¿e tworzenie dokumentów wed³ug paradygmatu
+WYSIWYG nie jest efektywne i~stopniowo nale¿y oczekiwaæ powstawania,
+wdra¿ania i~rozpowszechniania siê systemów opartych na paradygmacie
+\emph{formatowania strukturalnego}.
+
+W~dokumencie formatowanym strukturalnie oznaczana jest struktura
+dokumentu a~nie okre¶lany jego wygl±d. Zwróæmy uwagê, ¿e uk³ad
+graficzny jest pochodn± struktury, tj. nadajemy jednolity wygl±d
+tytu³om rozdzia³ów, ¶ródtytu³ów, przypisów, jednakowo wyró¿niamy
+wyliczenia itp.  Uk³ad graficzny jak ju¿ wspominano mo¿e ulegaæ zmianie
+(np. wraz z~rozpowszechnianiem siê nowych technologii wydawniczych)
+ale tre¶æ i~struktura raczej nie, np. Biblia Gutenberga widziana z~tej
+perspektywy nie zmieni³a siê wcale.
+
+% Na koñcu tytu³ów, ¶ródtytu³ów, tytu³ów rysunków i tabel
+% _nie_ umieszcza siê kropki
+\chapter{Wprowadzenie do standardów SGML/XML}
+
+SGML~\cite{Goldfarb} jest to \emph{metajêzyk} s³u¿±cy do opisywania
+struktury i~zawarto¶ci dokumentów (standard ISO 8879).  Do
+podstawowych zalet takiego podej¶cia nale¿y: 
+\begin{itemize}
+\item
+jest to miêdzynarodowy
+standard dostêpny na wielu platformach sprzêtowo{\dywiz}systemowych;
+\item
+jest to
+jêzyk opisu \emph{ka¿dego\/} dokumentu, o~praktycznie nieograniczonych
+mo¿liwo¶ciach (\emph{rozszerzalno¶æ\/}) 
+\item
+umo¿liwia powtórne
+wykorzystywanie dokumentów, tak¿e w sposób inny od poprzedniego
+(np. tradycyjna ksi±¿ka i~dokument multimedialny utworzony z~tego
+samego dokumentu SGML-owego).
+\end{itemize}
+
+Standard s³u¿y jedynie do opisywania logicznej struktury dokumentów,
+nie determinuje ostatecznej formy prezentacji informacji, która mo¿e
+byæ docelowo przekszta³cana w~najró¿niejszy sposób. Dokument
+zakodowany z~wykorzystaniem SGML-a mo¿e s³u¿yæ jako postaæ wyj¶ciowa
+do formatowania tej samej informacji w~ró¿ny sposób i~prezentacji
+z~u¿yciem ró¿nych mediów np. w~formie drukowanej na papierze,
+w~postaci hipertekstu albo tekstowej bazy danych. Pozwala to
+zminimalizowaæ koszty\index{koszty}, ca³y cykl wydawniczy dokonuje siê
+na jednym dokumencie -- pliku SGML-owym, a~nie na wielu.
+
+\begin{equation}
+f(X | \Phi )=\sum _{i=1}^{K}p_{k}\phi (X | \theta _{k})
+\end{equation}
+albo:
+\begin{equation}
+t = \frac{b^{(1)} - b^{(2)}}{\displaystyle \sqrt{%%
+\frac{(n^{(1)}-1)^2}{n^{(1)}+n^{(2)}-2} sb^{2(1)} + \frac{(n^{(2)}-1)^2}{n^{(1)}+n^{(2)}-2} sb^{2(2)}}
+\sqrt { \frac{1}{n^{(1)}} + \frac{1}{n^{(2)}} }}
+\end{equation}
+
+
+    
+\section{Elementy sk³adowe systemu SGML/XML}
+
+Standard SGML/XML to specyfikacja techniczna metajêzyka. Za¶ systemem
+SGML/XML nazywamy \emph{zestaw narzêdzi i~¶rodków niezbêdnych do
+tworzenia, sk³adowania i~obróbki dokumentów z~wykorzystaniem tego
+standardu}.  Typowy proces produkcji dokumentów w~standardzie SGML/XML
+podzielony jest na kilka czê¶ci. Najwa¿niejszymi elementami tego
+procesu s±~\cite[s.~45--47]{maler.devel}:
+    
+\begin{itemize}
+\item Klasyfikacja tworzonych dokumentów w~grupy i~wynikaj±cy z~tego
+  dobór definicji typu dokumentu\footnote{Definicja typu dokumentu DTD
+    to formalny opis pewnej klasy dokumentów, spis jej elementów
+    sk³adowych (znaczników i~ich atrybutów) oraz zasad ich stosowania
+    (hierarchii wystêpowania czy mo¿liwo¶ci skracania).}
+  (por.~punkt~\ref{s:dtd}).
+\item Wybraniu odpowiednich narzêdzi do tworzenia i~modyfikowania
+  dokumentów SGML/XML (edytory, konwertery, por.~punkt~\ref{s:edytor},
+  s.~\pageref{s:edytor})\footnote{Wybrany edytor winien w~maksymalnym
+    stopniu u³atwiaæ proces tworzenie dokumentów strukturalnych,
+    ró¿ni±cy siê od tego, jaki jest stosowany w~narzêdziach biurowych
+    typu edytor Word.}.
+\item Sprawdzenie poprawno¶ci oznaczenia dokumentów
+  (walidacja\index{walidacja}).
+\item Ustalenie metod sk³adowania zbiorów oznakowanych dokumentów.
+\item Ustalenie sposobu prezentacji oznaczonych dokumentów i~ich
+  formatów wyj¶ciowych -- przygotowanie odpowiednich specyfikacji
+  konwersji formatów i~dobór w³a¶ciwych do tego celu narzêdzi
+  (por.~punkty~\ref{s:dsssl} i~\ref{s:xsl}).
+\end{itemize}
+
+Ka¿dy z~wy¿ej wymienionych problemów stanowi pewne zadanie do
+wykonania, które mo¿e byæ w du¿ym stopniu lub ca³kowicie
+zautomatyzowane dziêki zastosowaniu odpowiednich narzêdzi, co jest
+jednym z~celów i~korzy¶ci stosowania systemu opartego na standardzie
+SGML/XML.
+
+\begin{figure}[!tbh]
+\centering 
+\includegraphics[width=.8\hsize]{schemat}
+\caption{Schemat archiwum\label{RYS.2}}
+\source{Opracowanie w³asne}
+\end{figure}
+
+\section{Opracowanie typu dokumentu\label{s:dtd}}
+Tworzenie DTD~\cite{maler.devel,maler.ex,db.guide} powinno zacz±æ siê
+od analizy posiadanych danych oraz potrzeb dotycz±cych dokumentów
+wynikowych i~informacji. Rezultatem analizy dokumentów jest
+wyspecyfikowanie s³ownika takich elementów oraz, dla ka¿dego typu
+dokumentu, zale¿no¶ci miêdzy tymi elementami. Z~tego powodu stworzenie
+dobrego DTD jest zadaniem nie³atwym. Ponadto DTD jest tylko czê¶ci±
+systemu SGML/XML; oprócz niego potrzebne s± narzêdzia do formatowania
+dokumentów, takie jak arkusze stylów DSSSL czy te¿ XSL/XSLT.
+    
+Du¿e koszty implementacji przemawiaj± czêsto za rozwa¿eniem
+wykorzystania, czy te¿ adaptacji w~systemie SGML/XML udostêpnionych
+publicznie gotowych DTD. W~omawianym projekcie post±piono podobnie,
+ewentualne opracowanie w³asnego typu dokumentu odk³adaj±c na pó¼niej.
+Rozwa¿ano wstêpnie wykorzystanie trzech publicznie dostêpnych typów
+dokumentów: \texttt{etd} zdefiniowanego na potrzeby projektu
+\textit{Electronic Theses and Dissertations} w~Virginia Polytechnic
+Institute and State University, \texttt{TEI} opracowanego w~ramach
+projektu \textit{Text Encoding Iniciative} \cite{tei.intro} oraz
+DocBook opracowany przez konsorcjum firm, g³ównie sektora IT,
+u¿ywaj±cych technologii SGML/XML do tworzenia dokumentacji do swoich
+produktów~\cite{db.guide}.
+    
+\section{DocBook}
+\emph{DocBook DTD}\index{DocBook|(} to typ dokumentu definiuj±cy
+strukturê i~zawarto¶æ zbioru znaczników SGML, s³u¿±cych do
+dokumentacji oprogramowania i~ró¿nego rodzaju dokumentacje
+techniczne~\cite[s.~123]{db.guide}. Posiada ona bardzo rozbudowan±
+hierarchiê znaczników do budowy struktur ksi±¿ek, dokumentacji
+technicznej itp dokumentów.  DTD dla tego typu dokumentu jest dostêpne
+zarówno w~standardzie SGML jak i~XML. Dostêpna jest tak¿e uproszczona
+wersja DTD o~nazwie SimpleDocbook. Zalet± u¿ywania wersji uproszczonej
+jest du¿o ³atwiejsze pos³ugiwanie siê ni±, z~uwagi na znacznie
+mniejsz± liczbê znaczników, por.~tabela~\ref{tab:dtd-cmp}.
+
+\begin{table}[!tbh]
+\begin{tabular}{|l|l|l|} \hline
+Typ dokumentu & Liczba elementów & Liczba encji \\ \hline
+Docbook & 357 & 1814 \\ \hline
+SimpleDocBook  & 93  & 234 \\ \hline
+TEI & brak danych & 3 \\ \hline
+HTML & 98  & 234 \\ \hline
+\end{tabular}
+\caption{Porównanie wielko¶ci popularnych definicji 
+  typu dokumentu\label{tab:dtd-cmp}}
+\source{Obliczenia w³asne}
+\end{table}
+
+DocBook jest u¿ywany obecnie w~wiêkszo¶ci zarówno komercyjnych jak
+i~niekomercyjnych projektach tworzenia dokumentacji komputerowej
+(np. dokumentacja dla takich projektów jak: LDP -- \textit{Linux
+Documentation Project}, \textit{RedHat Gnome Desktop},
+\textit{Postgres SQL RDBMS}, \textit{PHP3 Hypertext Preprocesor} czy
+dokumentacja do systemu FreeBSD).\index{DocBook|)}
+    
+\section{Edytory sterowane sk³adni±\label{s:edytor}}
+
+Pierwszym elementem systemu SGML/XML jest edytor
+strukturalny\index{edytor!strukturalny}, zwany te¿ edytorem sterowanym
+sk³adni±. W~tradycyjnych edytorach dzia³aj±cych wed³ug paradygmatu
+WYSIWYG\index{WYSIWYG} autor wprowadzaj±c tekst okre¶la na bie¿±co
+jego wygl±d, maj±c zarówno w~jednym jak i~drugim przypadku du¿±
+swobodê.  Taki sposób pracy w~przypadku masowego tworzenia dokumentów
+jest zupe³nie nieefektywny. W~szczególno¶ci dotyczy to pracy wielu
+autorów nad jednym lub wieloma dokumentami o~zuniformizowanym
+formacie, czy te¿ tworzenia dokumentów, o~których z~góry wiadomo, ¿e
+bêd± prezentowane w~ró¿ny sposób.
+
+Pewnym rozwi±zaniem opisywanych wy¿ej problemów jest wykorzystanie
+szablonów, w~które, od jakiego¶ czasu s± wyposa¿ane wszystkie
+popularne edytory biurowe\index{edytor!biurowy}.  Pos³uguj±c siê
+szablonami, autor nie definiuje wygl±du samodzielnie tylko wype³nia
+tre¶ci± zdefiniowany z~góry szablon dokumentu.  
+Stanowi±c niew±tpliwy
+krok do przodu takie podej¶cie nie rozwi±zuje jednak wszystkich
+problemów.
+
+Komercyjne edytory SGML, s± w~chwili obecnej ci±gle bardzo
+drogie, za¶ oprogramowanie rozprowadzane na ró¿nego rodzaju licencjach
+\emph{Open Source\/} nie oferuje jeszcze wygody pracy, do której
+przyzwyczaili siê u¿ytkownicy edytorów biurowych.  
+
+\section{Emacs i~psgml}
+
+Konstatuj±c brak tanich i~funkcjonalnych edytorów do pracy
+z~dokumentami SGML/XML nale¿y wspomnieæ o~jedynym dostêpnym w~chwili
+obecnej, efektywnym, tanim (darmowy) i~powszechnie dostêpnym na wielu
+platformach systemowo-sprzêtowych ¶rodowisku do tworzenia dokumentów
+strukturalnych jakim jest edytor Emacs\index{edytor!Emacs} z~pakietem
+psgml. ¦rodowisko to wspomaga autora poprzez:
+kolorowanie sk³adni dokumentów SGML i~aplikacji SGML, automatyczne
+uzupe³nianie brakuj±cych znaczników, automatyczn± kontrolê jakie
+w~danym kontek¶cie mo¿na wstawiaæ znaczniki i~atrybuty, wy¶wietlanie
+informacje odno¶nie mo¿liwych i~domy¶lnych warto¶ci. 
+Wszystkie funkcje s± dostêpne za pomoc±
+odpowiednie skrótów klawiszowych a~tak¿e dostêpne poprzez wybór
+wska¼nikiem myszy odpowiedniej pozycji z~menu. Pakiet ten umo¿liwia
+równie¿ wywo³anie zewnêtrznego parsera\index{parser} SGML celem
+weryfikacji poprawno¶ci dokumentu.
+      
+\chapter{Narzêdzia i~standardy pokrewne}
+
+Systemy SGML, ze wzglêdu na mnogo¶æ funkcji jakie spe³niaj± i~ich
+kompleksowe podej¶cie do oznakowywania i~przetwarzania dokumentów
+tekstowych, s± bardzo skomplikowane. Mo¿emy wyró¿niæ dwa podej¶cia do
+budowy takich systemów.  Z~jednej strony, buduje siê systemy
+zindywidualizowane, oparte o~specyficzne narzêdzia tworzone w~takich
+jêzykach, jak: C, C++, Perl czy Python. Edytory strukturalne, filtry
+do transformacji formatów czy parsery\index{parser} i~biblioteki
+przydatne do konstrukcji dalszych narzêdzi, tworzone s± wed³ug potrzeb
+okre¶lonych, pojedynczych systemów.
+    
+Z~drugiej strony, twórcy oprogramowania postanowili pój¶æ krok dalej
+i~po³±czyæ te ró¿ne narzêdzia w~jedn± ca³o¶æ. T± ca³o¶æ mia³ stanowiæ
+DSSSL lub jego XML-owy odpowiednik -- standard XSL. Ze wzglêdu na
+oferowane mo¿liwo¶ci mo¿na twierdziæ, ¿e tworzenie i~u¿ywanie narzêdzi
+implementuj±cych standard DSSSL/XSL, jest najw³a¶ciwszym
+podej¶ciem. Przemawiaj± za tym ró¿ne argumenty, ale najwa¿niejszym
+z~nich jest to, ¿e mamy tu mo¿liwo¶æ stworzenia niezale¿nego od
+platformy programowej i~narzêdziowej zbioru szablonów -- przepisów jak
+przetwarzaæ dokumenty SGML/XML.
+    
+\section{Przetwarzanie dokumentów SGML -- standard DSSSL\label{s:dsssl}}
+
+DSSSL (\textit{Document Style Semantics and Specification Language\/})
+-- to miêdzynarodowy standard ¶ci¶le zwi±zany ze standardem SGML.
+Standard ten, mo¿na podzieliæ na nastêpuj±ce czê¶ci:
+
+\begin{itemize}
+\item jêzyk transformacji (\textit{transformation language\/}).  To
+  definicja jêzyka s³u¿±cego do transformacji dokumentu oznaczonego
+  znacznikami zgodnie z~pewnym DTD na dokument oznaczony zgodnie
+  z~innym~DTD.
+\item jêzyk stylu (\textit{style language\/}) opisuj±cy sposób
+  formatowania dokumentów SGML.
+\item jêzyk zapytañ (\textit{query language\/}) s³u¿y do
+  identyfikowania poszczególnych fragmentów dokumentu SGML.
+\end{itemize}
+
+Opisane g³ówne czê¶ci sk³adowe standardu DSSSL daj± obraz tego, jak
+wiele aspektów przetwarzania zosta³o zdefiniowanych i~jak
+skomplikowany jest to problem. Jest to g³ównym powodem tego, ¿e mimo
+up³ywu kilku lat od zdefiniowania standardu nie powsta³y ani
+komercyjne ani wolnodostêpne aplikacje wspieraj±ce go
+w~ca³o¶ci. Istniej± natomiast \emph{nieliczne\/} narzêdzia realizuj±ce
+DSSSL w~ograniczonym zakresie, g³ównie w~czê¶ci definiuj±cej jêzyk
+stylu, który odpowiada za opatrzenie dokumentu czysto strukturalnego
+w~informacje formatuj±ce. Daje to mo¿liwo¶æ publikacji dokumentów SGML
+zarówno w~postaci elektronicznej, hipertekstowej czy te¿ drukowanej.
+      
+\section{Przetwarzanie dokumentów XML -- standard XSL\label{s:xsl}}
+
+Tak jak XML jest \emph{uproszczon±\/} wersj± standardu SGML, tak XSL
+jest uproszczonym odpowiednikiem standardu DSSSL. W~szczególno¶ci,
+wyró¿niæ mo¿na w~tym standardzie nastêpuj±ce czê¶ci sk³adowe:
+
+\begin{itemize}
+\item jêzyk transformacji (XSLT) To definicja jêzyka s³u¿±cego do
+  transformacji dokumentu.      
+\item jêzyk zapytañ (XPath) s³u¿y do identyfikowania poszczególnych
+  fragmentów dokumentu.
+\item jêzyk stylu deefiniuj±cy sposób formatowania dokumentów XML.
+\end{itemize}
+
+\chapter{Przegl±d dostêpnych narzêdzi\label{PRZEGLAD.NARZEDZI}}
+
+W~celu wykorzystania standardu SGML/XML do przetwarzania dokumentów,
+niezbêdne jest zebranie odpowiedniego zestawu narzêdzi. Narzêdzi do
+przetwarzania dokumentów SGML/XML jest wiele. S± to zarówno ca³e
+systemy zintegrowane, jak i~poszczególne programy, biblioteki czy
+skrypty wspomagaj±ce.
+    
+\section{Narzêdzia do przegl±dania dokumentów SGML/XML}
+
+Do tej kategorii oprogramowania zaliczamy przegl±darki dokumentów
+SGML/XML oraz serwery sieciowe wspomagaj±ce standard SGML/XML, przy
+czym rozwi±zañ wspieraj±cych standard XML jest ju¿ w~chwili obecnej
+du¿o wiêcej i~s± du¿o powszechniejsze.
+
+Je¿eli chodzi o~przegl±darki to zarówno Internet Explorer jak
+i~Netscape umo¿liwiaj± bezpo¶rednie wy¶wietlenie dokumentów XML;
+poniewa¿ jednak nie wspieraj± w~ca³o¶ci standardu XML, prowadzi to
+ci±gle do wielu problemów\footnote{Z~innych mniej popularnych
+  rozwi±zañ mo¿na wymieniæ takie aplikacje, jak: HyBrick SGML/XML
+  Browser firmy Fujitsu Limited, Panorama Publisher firmy InterLeaf
+  Inc, DynaText firmy Inso Corporation czy darmowy QWeb. W~przypadku
+  serwerów zwykle dokonuj± one transformacji ,,w~locie'' ¿±danych
+  dokumentów na format HTML (rzadziej bezpo¶rednio wy¶wietlaj±
+  dokumenty XML).  Ta kategoria oprogramowania ma, z~punktu widzenia
+  projektu, znaczenie drugorzêdne.}.
+      
+\section{Parsery SGML/XML}
+Program \texttt{nsgmls} (z~pakietu \texttt{SP} Jamesa Clarka) jest
+doskona³ym parserem\index{parser} dokumentów SGML, dostêpnym
+publicznie.  Parser \texttt{nsgmls} jest dostêpny w~postaci ¼ród³owej
+oraz w~postaci programów wykonywalnych przygotowanych na platformê
+MS~Windows, Linux/Unix i~inne. Oprócz analizy poprawno¶ci dokumentu
+parser\index{parser} ten umo¿liwia równie¿ konwersjê danych do formatu
+ESIS\index{ESIS}, który wykorzystywany jest jako dane wej¶ciowe przez
+wiele narzêdzi do przetwarzania i~formatowania dokumentów SGML.
+Dodatkowymi, bardzo przydatnymi elementami pakietu \texttt{SP} s±:
+program \texttt{sgmlnorm} do normalizacji, program \texttt{sx} s³u¿±cy
+do konwersji dokumentu SGML na XML oraz biblioteki programistyczne,
+przydatne przy tworzeniu specjalistycznych aplikacji s³u¿±cych do
+przetwarzania dokumentów SGML.
+      
+W~przypadku dokumentów XML publicznie dostêpnych, parserów jest
+w~chwili obecnej kilkadziesi±t. Do popularniejszych zaliczyæ mo¿na
+Microsoft Java XML Parser firmy Microsoft, LT XML firmy Language
+Technology Group, Exapt oraz XP (James Clark)
+      
+\section{Wykorzystanie jêzyków skryptowych}
+      
+\section{Wykorzystanie szablonów XSL}
+
+Stosuj±c wersjê XML typu DocBook mo¿na wykorzystaæ szablony stylów
+przygotowane w~standardzie XSL (autor N.~Walsh). W~chwili obecnej
+s± dostêpne narzêdzia umo¿liwiaj±ce przetworzenie dokumentów XML do
+postaci drukowanej (Adobe PDF) oraz hipertekstowej (HTML).
+
+Podobnie jak w~przypadku szablonów DSSSL, szablony stylów XSL s±
+sparametryzowane i~udokumentowane i~dziêki temu ³atwe w~adaptacji. Do
+zamiany dokumentu XML na postaæ prezentacyjn± mo¿na wykorzystaæ jeden
+z~dostêpnych publicznie procesorów XSLT
+(por.~tabela~\ref{zest:proces:xslt}).
+
+\begin{table}[!htb]
+\begin{tabular}{|l|l|l|} \hline
+Nazwa & Autor      & Adres URL \\ \hline
+\texttt{sablotron} & Ginger Alliance & \url{http://www.gingerall.com} \\ \hline
+\texttt{Xt}        & J.~Clark & \url{http://www.jclark.com} \\ \hline
+\texttt{4XSLT}     & FourThought & \url{http://www.fourthought.com} \\ \hline
+\texttt{Saxon}     & Michael Kay &  \url{http://users.iclway.co.uk/mhkay/saxon} \\ \hline
+\texttt{Xalan}     & Apache XML Project & \url{http://xml.apache.org} \\ \hline
+\end{tabular}
+\caption{Publicznie dostêpne procesory XLST\label{zest:proces:xslt}}
+\source{Opracowanie w³asne}
+\end{table}
+
+Wykorzystuj±c szablony, na podstawie dokumentu XML otrzymujemy
+bezpo¶rednio dokument HTML. W~przypadku wersji drukowanych sprawa jest
+bardziej skomplikowana (por.~rys.~\ref{fig:xsl-fo}).
+
+\begin{figure}[!tbh]
+\centering 
+\includegraphics[width=.8\hsize]{fo-structure}
+\caption{Ogólna struktura dokumenu XSL-FO\label{fig:xsl-fo}}
+\source {Opracowanie w³asne}
+\end{figure}
+
+XSL:FO jest skomplikowanym jêzykiem o~du¿ych mo¿liwo¶ciach,
+zawieraj±cym ponad 50 ró¿nych ,,obiektów formatuj±cych'', pocz±wszy od
+najprostszych, takich jak prostok±tne bloki tekstu poprzez wyliczenia,
+tabele i~odsy³acze. Obiekty te mo¿na formatowaæ wykorzystuj±c przesz³o
+200 ró¿nych w³a¶ciwo¶ci (\emph{properties\/}), takich jak: kroje,
+odmiany i~wielko¶ci pisma, odstêpy, kolory itp.  
+W~tym dokumencie przedstawione jest absolutne miniumum informacji 
+na temat standardu XSL:FO.
+
+Ca³y dokument XSL:FO zawarty jest wewn±trz elementu \texttt{fo:root}.
+Element ten zawiera (w~podanej ni¿ej kolejno¶ci):
+ %
+\begin{itemize}
+\item dok³adnie jeden element \texttt{fo:layout-master-set} zawieraj±cy
+  szablony okre¶laj±ce wygl±d poszczególnych stron oraz sekwencji
+  stron (te ostatnie s± opcjonalne, ale typowo s± definiowane);
+\item zero lub wiêcej elementów \texttt{fo:declarations};
+\item jeden lub wiêcej elementów \texttt{fo:page-sequance}
+ zawieraj±cych tre¶æ formatowanego dokumentu wraz z~opisem
+ jego sformatowania i~podzia³u na strony.
+\end{itemize}
+
+%
+% Zakoñczenie 
+\summary
+Mo¿liwo¶ci, jakie stoj± przed archiwum prac magisterskich opartych na
+XML-u, s± ograniczone jedynie czasem, jaki nale¿y po¶wiêciæ na pe³n±
+implementacjê systemu. Nie ma przeszkód technologicznych do stworzenia
+co najmniej równie doskona³ego repozytorium, jak ma to miejsce w
+przypadku ETD. Je¿eli chcemy w pe³ni uczestniczyæ w rozwoju nowej ery
+informacji, musimy szczególn± uwagê przyk³adaæ do odpowiedniej
+klasyfikacji i archiwizacji danych. S±dzê, ¿e jêzyk XML znacznie to
+upraszcza.
+
+%
+% Za³±czniki (opcjonalnie):
+\appendix
+\chapter{Tytu³ za³±cznika jeden}
+
+Tre¶æ za³±cznika jeden. Tre¶æ za³±cznika jeden. Tre¶æ za³±cznika jeden
+Tre¶æ za³±cznika jeden. Tre¶æ za³±cznika jeden.
+Tre¶æ za³±cznika jeden.
+
+\chapter{Tytu³ za³±cznika dwa}
+
+Tre¶æ za³±cznika dwa. Tre¶æ za³±cznika dwa. Tre¶æ za³±cznika dwa
+Tre¶æ za³±cznika dwa. Tre¶æ za³±cznika dwa.
+Tre¶æ za³±cznika dwa.
+
+%
+% Literatura (obowi±zkowo):
+\begin{thebibliography}{99}
+% Pozycja bibliograficzna typu: ksi±¿ka.
+% autor/autorzy: tytu³, wydawca, rok-wydania
+\bibitem{tei.intro}
+Burnard L.,
+Sperberg-McQueen C. M.:
+\textit{TEI Lite: An Introduction to Text Encoding for Interchange},
+1995.
+\url{http://www.uic.edu/orgs/tei/intros/teiu5.html}.
+
+% Czasami zamiast autora-osoby nale¿y umie¶ciæ nazwê organizacji/firmy,
+% tak jak w przyk³adzie poni¿ej
+\bibitem{pdf.spec}
+Adobe Systems Inc:
+\textit{Portable Document Format Reference Manual Version 1.2},
+Addison-Wesley, 1996.
+
+% Pozycja bibliograficzna typu: artyku³.
+% autor/autorzy: ,,tytu³-artyku³u'', tytu³-czasopisma numer, rok, strony
+\bibitem{beebe}
+Beebe N.~H.~F.:
+,,Bibliography Prettyprinting and Syntax Checking'',
+\textit{TUGBoat} 14/4, 1995, 
+s.~395--419.
+
+% Pozycja bibliograficzna typu: rozdzia³ z pracy zbiorowej/monografii.
+% autor/autorzy: ,,tytu³-rozdzia³u'', w: tytu³-ksi±¿ki
+%   (red. redaktor), miejsce-wydania rok-wydania, strony
+\bibitem{}
+Braams J. L.:
+The Status of Babel,
+w:~\textit{Proceedings of the IXth European TeX Conference}
+(W. Dol red.), Arnhem 1995, s.~17--26.
+
+\bibitem{XMLspec}
+Bray T.,
+Paoli J.,
+Sperberg-McQueen C.~M.:
+\textit{Extensible Markup Language (XML)~1.0},
+1998. \url{http://www.w3.org/TR/1998/REC-xml-19980210}.
+
+\bibitem{bryan}
+Bryan M.:
+\textit{SGML and HTML explained},
+Addison-Wesley
+1997.
+
+\bibitem{xslt}
+Clark J.:
+\textit{XSL Transformations (XSLT) Version~1.0},
+1999. \url{http://www.w3.org/TR/xslt}.
+
+\bibitem{p.flynn}
+Flynn P.:
+\textit{Understanding SGML and XML tools},
+Kluwer Academic Publishers
+1998.
+
+\bibitem{Goldfarb}
+Goldfarb C.:
+\textit{The SGML Handbook},
+Oxford University Press.
+
+\bibitem{lwc}
+Goossens M.,
+Rahtz S.:
+\textit{The {\LaTeX} Web Companion},
+Addison-Wesley
+1999.
+
+\bibitem{python.tkinter}
+Grayson J.:
+\textit{Python and Tkinter programming},
+Manning Publications.
+
+\bibitem{Herwinen-Pract}
+Van Herwijnen E.:
+\textit{Practical SGML},
+Kluwer Academic Publishers
+1990.
+
+\bibitem{lamport}
+Lamport L.:
+\textit{{\LaTeX}: a~document preparation system},
+Addison-Wesley
+1994.
+
+\bibitem{maler.ex}
+Maler E.:
+\textit{SGML exceptions and XML},
+1998.
+\url{http://www.arbortext.com/Think_Tank/XML_Resources/SGML_Exceptions_and_XML}.
+
+\bibitem{maler.devel}
+Maler E.,
+El Andaloussi J.:
+\textit{Developing SGML DTDs. From Text to Model to Markup},
+Prentice Hall
+1996.
+
+\bibitem{s.north}
+North S.:
+\textit{XML dla ka¿dego},
+Helion
+2000.
+
+\bibitem{whirlwind-guide}
+Pepper S.:
+\textit{Whirlwind Guide to SGML Tools and Vendors}.
+\url{http://www.infotek.no/sgmltool/index.htm}.
+
+\bibitem{p.perl}
+Wall L.,
+Christiansen T.,
+Schwartz R.:
+\textit{Programming Perl},
+O'Reilly \&~Associates
+1996.
+
+\bibitem{db.guide}
+Walsh N.,
+Muellner L.:
+\textit{DocBook: The Definitive Guide},
+O'Reilly \&~Associates October~1999.
+Dokument dostêpny tak¿e w~\url{http://www.docbook.org/}.
+
+\end{thebibliography}
+
+%
+% Spis tabel (je¿eli jest potrzebny):
+\listoftables
+%
+% Spis rysunków (je¿eli jest potrzebny):
+\listoffigures
+
+%
+% Skorowidz (opcjonalnie)
+\printindex
+
+\oswiadczenie
+
+\end{document}
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: t
+%%% coding: latin-2
+%%% End: 

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/PR-SVG-20010719/DTD/svg10.dtd">
+<svg width="30cm" height="9cm" viewBox="91 39 589 165" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <g>
+    <rect style="fill: #ffffff" x="223" y="41" width="93" height="41"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="223" y="41" width="93" height="41"/>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="222" y="161" width="92" height="42"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="222" y="161" width="92" height="42"/>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="371" y="105" width="60" height="39"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="371" y="105" width="60" height="39"/>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="477" y="105" width="67" height="41"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="477" y="105" width="67" height="41"/>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="607" y="103" width="72" height="41" rx="2.35099e-37" ry="2.35099e-37"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="607" y="103" width="72" height="41" rx="2.35099e-37" ry="2.35099e-37"/>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="92" y="101" width="101" height="39"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="92" y="101" width="101" height="39"/>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="300,87 300,116 364.528,116 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="350.764,124 366.764,116 350.764,108 "/>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="301,157 301,133 362.528,133 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="348.764,141 364.764,133 348.764,125 "/>
+  </g>
+  <g>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="431" y1="124.5" x2="467.531" y2="123.164"/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="454.069,131.661 469.765,123.082 453.484,115.672 "/>
+  </g>
+  <g>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="550.998" y1="126.233" x2="597.528" y2="126.02"/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="583.801,134.083 599.764,126.01 583.728,118.083 "/>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="116,98 116,98 116,59 212.528,59 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="198.764,67 214.764,59 198.764,51 "/>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="316,61.5 316,50 531,50 531,94.5279 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="523,80.7639 531,96.7639 539,80.7639 "/>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="212.528,181 119,181 119,143 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="198.764,189 214.764,181 198.764,173 "/>
+  </g>
+  <text style="fill: #000000; font-size: 16 cm; length: 49.9 cm; font-family: sans; font-style: normal; font-weight: normal" x="114.05" y="124.5">zmienne</text>
+  <text style="fill: #000000; font-size: 16 cm; length: 15.55 cm; font-family: sans; font-style: normal; font-weight: normal" x="274.225" y="65">PU</text>
+  <text style="fill: #000000; font-size: 16 cm; length: 32.05 cm; font-family: sans; font-style: normal; font-weight: normal" x="248.975" y="188">PEOU</text>
+  <text style="fill: #000000; font-size: 16 cm; length: 21.1 cm; font-family: sans; font-style: normal; font-weight: normal" x="398.95" y="126.5">ATT</text>
+  <text style="fill: #000000; font-size: 16 cm; length: 11.5 cm; font-family: sans; font-style: normal; font-weight: normal" x="498.75" y="130.5">BI</text>
+  <text style="fill: #000000; font-size: 16 cm; length: 0 cm; font-family: monospace; font-style: normal; font-weight: normal" x="349" y="181"></text>
+  <text style="fill: #000000; font-size: 16 cm; length: 0 cm; font-family: monospace; font-style: normal; font-weight: normal" x="366" y="182"></text>
+  <text style="fill: #000000; font-size: 16 cm; length: 23.25 cm; font-family: sans; font-style: normal; font-weight: normal" x="638.375" y="126">USE</text>
+  <g>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="279" y1="154" x2="279.933" y2="91.4716"/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="287.727,105.353 279.967,89.2358 271.729,105.115 "/>
+  </g>
+</svg>

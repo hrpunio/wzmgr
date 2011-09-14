@@ -1,0 +1,429 @@
+<?xml version='1.0' encoding='iso-8859-2' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+   "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd" >
+ <!--"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">-->
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-2" />
+ <meta name="DC.creator" content="Tomasz Przechlewski" />
+ <meta name='DC.date' content='2011-01-28T15:02:14CET'/>
+ <meta name='DC.rights' content='(c) Tomasz Przechlewski'/>
+ <meta name="DC.title" content="Przygotowanie pracy licencjackiej/magisterskiej w systemie LaTeX: klasa wzmgr"/>
+
+ <!-- default styles: -->
+ <link rel="stylesheet" type="text/css" href="/style/tp-base.css" title='ES'/>
+ <link rel="alternate stylesheet" type="text/css" href="/style/tp-bw.css" title='NS'/>
+ <link rel="alternate stylesheet" type="text/css" href="/style/tp-big.css" title='BS'/>
+ <script type="text/javascript" src="/script/tp.js" > </script>
+ <!-- styles end  -->
+
+<title>Przygotowanie pracy licencjackiej/magisterskiej w systemie LaTeX: klasa wzmgr</title>
+</head>
+<body>
+
+<h2 class='main'>Przygotowanie pracy licencjackiej/magisterskiej: klasa <code>wzmgr</code></h2>
+
+ <div class="toc">
+ <ul>
+  <li><a href="#opcz">Opcje klasy <code>wzmgr</code></a></li>
+  <li><a href="#dodo">Dodatkowe polecenia i środowiska zdefiniowane w klasie <code>wzmgr</code></a></li>
+  <li><a href="#pozo">Pozostałe uwagi</a></li>
+  <li><a href="#pspc">Przykładowa struktura pracy</a></li>
+  <li><a href="#natb">Odsyłacze bibliograficzne w stylu autor-rok</a></li>
+  <li><a href="#zmip">Zmiany</a></li>
+ </ul> </div> <hr/>
+
+
+
+
+<p>
+ Klasa <code>wzmgr</code> umożliwia sprawne i wygodne przygotowanie
+ pracy magisterskiej lub licencjackiej zgodnie  
+ <span class='obsolete'>z wymogami obowiązującymi na wydziale 
+   <a href="http://www.wzr.pl">Zarządzania Uniwersytetu Gdańskiego</a></span>
+ z typowymi wymogami obowiązującym przy redagowaniu tego rodzaju prac
+ <span class='obsolete'>w systemie LaTeX</span>.
+</p>
+
+<p>
+ Archiwum zawierające klasę oraz przykładowe dokumenty: 
+ <a href="./wzmgr111.zip">wzmgr111.zip</a>. 
+ [wersja `rozpakowana': <a href="./wzmgr">wzmgr111</a>
+  || starsza wersje: 
+    <a href="./wzmgr110.zip">wzmgr110.zip</a>
+    <a href="./wzmgr106.zip">wzmgr106.zip</a>
+  | <a href="./wzmgr105.zip">wzmgr105.zip</a>
+  | <a href="./wzmgr104.zip">wzmgr104.zip</a>].
+ Przykładowy dokument w formacie PDF:
+ <a href="./wzmgr.pdf">wzmgr.pdf</a>.
+ Różne <a href="./wip.html">wskazówki i podpowiedzi</a> dotyczące LaTeXa.
+   Więcej informacji na temat systemu LaTeX można znaleźć 
+ <a href="../index.html">tutaj</a>.
+</p>
+<!-- ................. -->
+<h3 id='opcz'>Opcje klasy <code>wzmgr</code>:</h3>
+<dl>
+<dt><code>magisterska</code></dt>
+<dd>praca magisterska (wartość domyślna);</dd>
+
+<dt><code>licencjacka</code></dt>
+<dd>praca licencjacka;</dd>
+
+<dt><code>skorowidz</code></dt>
+<dd>praca będzie zawierała skorowidz;</dd>
+
+<dt><code>autorrok</code></dt>
+<dd>włącza przywołania bibliograficzne (cytowania) w schemacie <em>autor-rok</em>. 
+Więcej informacji na ten temat jest w punkcie <a href='#natbib'><em>Odsyłacze bibliograficzne 
+w stylu autor-rok</em></a></dd>
+
+<dt><code>backref</code></dt>
+<dd>przekazanie opcji <code>backref</code> do pakietu <code>hyperref</code>. W spisie literatury pojawią się numery
+stron, na których znajduje się przywołanie bibliograficzne (przydatne na etapie
+pisania pracy oraz w przypadku dokumentu elektronicznego);</dd>
+
+<dt><code>palatino</code></dt>
+<dd>skład krojem TeXGyre Pagella (tgpagella), który jest klonem Palatino;</dd>
+
+<dt><code>tgpagella</code></dt>
+<dd>to samo co opcja <code>palatino</code></dd>
+
+<dt><code>times</code></dt>
+<dd>skład krojem TeXGyre Termes (tgtermes), który jest klonem Times New Roman;</dd>
+
+<dt><code>tgtermes</code></dt>
+<dd>to samo co opcja <code>times</code></dd>
+
+<dt><code>brudnopis</code></dt>
+<dd>wstępna wersja pracy: drukowanie z pojedynczym odstępem
+i oznaczanie każdej strony numerem wersji oraz datą;</dd>
+
+<dt><code>xodstep</code></dt><dd>zwiększenie odstępu 
+ między wierszami.</dd>
+</dl>
+<!-- ................. -->
+<h3 id='dodo'>Dodatkowe polecenia i środowiska zdefiniowane w klasie <code>wzmgr</code></h3>
+
+<dl>
+
+ <dt><code>\UniversityName</code></dt>
+ <dd>Nazwa szkoły, drukowana na górze strony tytułowej 
+ (domyślnie <em>Uniwersytet Gdański -- Wydział Zarządzania</em>);
+ </dd>
+
+ <dt><code>\oswiadczenie</code></dt>
+ <dd>tekst oświadczenia o samodzielnym wykonaniu pracy, określony
+ w piśmie okólnym Rektora UG z dnia 13 grudnia 2004 (należy
+ umieścić na końcu pracy, tj. przed <code>\end{document}</code>);</dd>
+
+ <dt><code>\autor</code></dt>
+ <dd>imię oraz nazwisko autora;</dd>
+
+ <dt><code>\nralbumu</code></dt>
+ <dd>numer albumu;</dd>
+
+ <dt><code>\email</code></dt> 
+ <dd>adres email autora (opcjonalnie);</dd>
+
+ <dt><code>\kierunek</code></dt>
+ <dd>nazwa kierunku, np. Informatyka Ekonomiczna;</dd>
+
+ <dt><code>\opiekun</code></dt>
+ <dd>tytuł naukowy, imię i nazwisko promotora;</dd>
+
+ <dt><code>\miejsce</code></dt>
+ <dd>miejsce obrony (opcjonalnie), jeżeli nie podano zostanie wpisany Sopot;</dd>
+
+ <dt><code>\keywords</code></dt>
+ <dd>lista słów kluczowych (oddzielonych przecinkami);</dd>
+
+ <dt><code>abstract</code></dt> 
+ <dd>streszczenie (środowisko);</dd>
+
+ <dt><code>\introduction</code></dt> 
+ <dd>wstęp;</dd>
+
+ <dt><code>\summary</code></dt> 
+ <dd>zakończenie;</dd>
+
+ <dt><code>\source</code></dt> 
+ <dd>źródło, umieszczane pod tabelą i rysunkiem;</dd>
+
+ <dt><code>\nrwersji</code></dt> 
+ <dd>etykieta wersji dokumentu.</dd>
+</dl>
+<!-- %% %% %% %% %% %% %% -->
+
+<h3 id='pozo'>Pozostałe uwagi</h3>
+
+<p>
+ Polecenia <code>\autor</code>, <code>\nralbumu</code> (ewentualnie
+ <code>\email</code>) można wstawić wielokrotnie jeżeli praca jest
+ dziełem kilku autorów.
+</p>
+
+<p>Polecenie <code>\oswiadczenie</code> zostało dodane do wersji 1.03
+pakietu a polecenie \UniversityName do wersji 1.04.
+Opcja <code>tgtermes</code>/<code>times</code> zostało dodane do wersji 1.11.
+</p>
+
+<p>
+ Klasa wykorzystuje następujące pakiety: <code>graphicx</code>,
+ <code>polski</code>, 
+ <code>hyperref</code>, 
+ <code>url</code>,
+ <code>prelim2e</code>
+ oraz 
+ <code>natbib</code> (z opcją <code>autorrok</code>).
+</p>
+<!-- ................. -->
+<h3 id='pspc'>Przykładowa struktura pracy</h3>
+<pre>
+%&amp; --translate-file=il2-pl
+\documentclass[skorowidz,palatino,brudnopis]{wzmgr}
+\nrwersji {<em>etykieta</em>}
+
+\UniversityName {Nazwa-Szkoły}
+
+\author   {<em>imię1 nazwisko1</em>}
+\nralbumu {<em>numer1</em>}
+\email    {<em>email1@gnu.univ.gda.pl</em>}
+
+\author   {<em>imię2 nazwisko2</em>}
+\nralbumu {<em>numer2</em>}
+
+\title    {<em>tytuł-pracy</em>}
+
+\kierunek {<em>nazwa-kierunku</em>}
+\date     {<em>rok-obrony</em>}
+\miejsce  {<em>miejsce</em>}
+
+\opiekun  {<em>tytuł-naukowy imię nazwisko</em>}
+\begin{document}
+
+\begin{abstract}... \end{abstract}
+\keywords{<em>słowo-kluczowe</em>, <em>słowo-kluczowe</em>, ... }
+\maketitle
+% --- początek pracy ---
+% Wstęp
+\introduction
+...
+
+\chapter{<em>tytuł-rozdziału</em>}
+....
+    
+\section{<em>tytuł-podrozdziału</em>}
+...
+\section{<em>tytuł-podrozdziału</em>}
+...
+...
+% Zakończenie
+\summary
+...
+
+% Załączniki (opcjonalnie):
+\appendix
+\chapter{<em>tytuł-załącznika</em>}
+...
+\chapter{<em>tytuł-załącznika</em>}
+...
+
+% Literatura:
+\begin{thebibliography}{99}
+...
+\end{thebibliography}
+
+% Spisy tabel i rysunków (jeżeli są potrzebne):
+\listoftables
+\listoffigures
+
+% Skorowidz (opcjonalnie)
+\printindex
+
+\end{document}
+</pre>
+
+
+<h3 id='natb'>Odsyłacze bibliograficzne w stylu autor-rok</h3>
+
+<p>
+Cytowania w schemacie autor-rok wymagają uruchomienia klasy z opcją <code>autorrok</code>
+(opcja <code>autorrok</code> powoduje dołączenie
+pakietu <code>natbib</code>).
+Można albo korzystać z <code>bibtexa</code>, np.:
+</p>
+
+<pre>
+pdflatex plik.tex
+bibtex plik
+pdflatex plik.tex
+</pre>
+<p>
+Wówczas niezbędne będzie dodanie w preambule dokumentu 
+wpisu <code>\bibliographystyle</code>, 
+np. <code>\bibliographystyle{papalike}</code> (por. plik <code>papalike</code> dołączony do pakietu
+oraz przykład  <code>mgr-main.tex</code>).  
+</p>
+
+<p>
+Jeżeli spis jest krótki, to <code>bibtex</code> będzie tzw. <em>overkilem</em>
+-- lepiej umieścić spis literatury przygotowany ręcznie:
+</p>
+<pre>
+\begin{thebibliography}{}
+\bibitem[M.~Feldstein i~C.~Horioka(1980)]{FeldsteinHorioka1980}
+Feldstein M., Horioka C. (1980), 
+Domestic Saving and International Capital Flows, 
+Economic Journal, vol.~90, s.~314--329
+
+\bibitem[O.~Attanasio, L.~Picci, A.~Scorcu (2000)]{AttanasioPicciScorcu2000}
+Attanasio O.~P., L.~Picci, A.~E.~Scorcu, (2000), 
+Saving, Growth, and Investment: A Macroeconomic Analysis Using a Panel of Countries, 
+The Review of Economics and Statistics, vol.~82, s.~182--211.
+
+\bibitem[J.~Frankel(1992)]{Frankel1992}
+Frankel J.~A., (1992), 
+Measuring international capital mobility: A review, 
+American Economic Review, vol.~82, s.~197--202.
+ %% %% itd %% %%
+\end{thebibliography}
+</pre>
+<p>Etykieta 
+polecenia <code>\bibitem</code> ma obowiązkowy wyglądać jak powyżej:
+<code>autor(rok)</code> lub <code>autorzy(rok)</code> (albo <code>tytuł(rok)</code>
+dla publikacji wielu autorów...
+</p>
+
+<p>
+UWAGA: w przypadku podzielenia przywołania <strong>pomiędzy stronami</strong>
+link w pliku PDF tworzonym <code>pdflatexem</code> z strony poprzedniej <strong>może</strong>
+nie kończyć się na prawym brzegu ostatniego wiersza ale 
+obejmować
+także ewentualne przypisy, ew. paginę dolną oraz paginę górną następnej
+strony i kończyć się dopiero na 
+początku pierwszego wiersza następnej strony. Ewidentnie jest to niedoróbka,
+tyle, że owa niedoróbka nie jest spowodowana błędem pakietów natbib/hyperref ale
+wynika z ograniczeń działania <code>pdflatexa</code>. Na pocieszenie 1) w pracy
+magisterskiej/licencjackiej przy normalnej liczbie przywołań literatury 
+prawdopodobieństwo ww. zdarzenie nie jest za duże; 2) problem jest tylko
+z plikiem PDF, wydruk na papierze jest OK.
+</p>
+
+
+<h3 id='zmip'>Zmiany</h3>
+
+<dl>
+
+<dt>Wersja 1.11 (28/01/2011)</dt>
+<dd>Usunięto ,,zasiedziały'' błąd aktywacji opcji <code>tgpagella</code>/<code>tgtermes</code>.
+We wszystkich poprzednich wersjach było:
+<p/>
+<pre>
+\DeclareOption{tgpagella}{\input{tgpagella.sty}}
+</pre>
+<p>Pakiety <code>tgpagella</code>/<code>tgtermes</code>
+zostały przedefiniowane w nowych dystrybucjach TeXa i ich załadowanie
+poprzez 
+bezpośrednie wykonanie polecenia <code>\input</code> powoduje błąd:
+</p>
+<pre>
+! LaTeX Error: \RequirePackage or \LoadClass in Options Section.
+</pre>
+
+<p>Komunikat opisuje dokładnie problem: 
+w rzeczy samej bowiem <code>tgpagella.sty</code> zawiera 
+<code>\RequirePackage{kvoptions}</code>. 
+Problem sprowadza się do tego, że <code>\RequirePackage</code> jest wykonywane <em>nie w tym miejscu</em>
+co trzeba. 
+</p>
+<p>
+Załadowanie pakietu należy przeprogramować następująco:
+</p>
+<pre>
+
+\newif\if@wzmgrauthoryear  \@wzmgrauthoryearfalse
+%% ...
+\DeclareOption{tgpagella}{\@wzmgrWithTgPagellatrue}
+%% ... po \LoadClass{\@baseclass} ...
+\if@wzmgrWithTgPagella \RequirePackage{tgpagella} \fi
+</pre>
+<p>Powyższe nie jest do końca prawdą. Jak już zmieniać to na całość:
+</p>
+<pre>
+\if@wzmgrWithTgPagella \RequirePackage{tgpagella,pxfonts,qpxmath} 
+  \RequirePackage[T1]{fontenc} \fi
+\if@wzmgrWithTgTermes \RequirePackage{tgtermes,txfonts,qtxmath} 
+\RequirePackage[T1]{fontenc} \fi
+</pre>
+<p>
+Pakiety <code>pxfonts</code>/<code>txfonts</code> i <code>qpxmath</code>/<code>qtxmath</code> przełączają
+na odpowiednio Times/Palatino także matematykę. 
+Wykonanie <code>\RequirePackage[T1]{fontenc}</code> przełączy kodowanie na <code>T1</code> [zamiast
+domyślnego <code>OT4</code>]. Fontami domyślnymi 
+w klasie <code>wzmgr</code> są ,,fonty TeXowe'', konkretnie fonty PL,
+dla których kodowanie <code>T1</code> jest niezdefiniowane. Z tego powodu
+przełączenia na <code>T1</code> nie aplikujemy
+globalnie 
+ale tylko w sytuacji korzystania z Times/Palatino.
+</p>
+
+<p>Przy okazji poprawienia tego błędu dodano opcje <code>tgtermes</code>/<code>times</code> przełączające 
+krój pisma na <em>Times New Roman</em>.
+</p>
+</dd>
+
+<dt>Wersja 1.10 (19/06/2009)</dt>
+<dd>Słowa kluczowe i streszczenie są teraz opcjonalne. 
+Usunięto błędy: opcja `brudnopis' nie działała
+podobnie jak deklaracja adresu email zawierającego nie-litery mogła spowodować tajemniczy błąd (w połączeniu
+z opcją brudnopis). 
+Do generowania id dokumentu (napisu umieszczonego na dole strony zawierającego datę i numer wersji)
+wykorzystywany jest teraz pakiety <code>prelim2e</code>/<code>everyshi</code>
+Martina Schroedera.
+</dd>
+
+<dt>Wersja 1.06 (3/2009)</dt>
+<dd>
+Dodano alternatywny sposób formatowania literatury adekwatny
+w przypadku używania stylu <code>autor-rok</code>.  Dodana opcja
+<code>breaklinks</code> do wywołania pakietu <code>hyperref</code>
+(która czasami może nie działać poprawnie--opis wyżej) ponieważ
+zakładamy, że nikt już nie używa formatów
+<code>dvi</code>/<code>ps</code>. Bo i po co?
+</dd>
+
+<dt>Wersja 1.05 (4/2008)</dt>
+<dd>Zamiana <code>qpalatin.sty</code> na <code>tgpagella.sty</code> w opcji
+   <code>palatino</code> oraz dodanie opcji <code>tgpagella</code>
+   (alias <code>palatino</code>). 
+   Zmiana dopasowuje <code>wzmgr.cls</code> do współczesnych
+   dystrybucji TeXa.</dd>
+<dt>Wersja 1.04 (6/2007)</dt>
+
+<dd>Dodanie polecenia <code>\UniversityName</code>.</dd>
+
+<dt>Wersja 1.03 (6/2005)</dt>
+<dd>Dodanie polecenia <code>\oswiadczenie</code>.</dd>
+
+</dl>
+<!-- ................. -->
+<p>
+<a href="../index.html">
+ <img src="../../../icons/back.png" longdesc="[[back.png"
+   alt="Powrót"/>Powrót</a>
+</p>
+
+</body>
+</html>
+<!--
+Local variables:
+ mode: nxml
+ time-stamp-start:"name='DC.date' content='"
+ time-stamp-end:"'/>"
+ time-stamp-line-limit:0
+ LocalWords: Przechlewski
+ ispell-local-dictionary: "polish"
+End:
+-->
+
